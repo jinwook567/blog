@@ -40,7 +40,7 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "develop": "gatsby develop",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
