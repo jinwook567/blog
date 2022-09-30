@@ -9,6 +9,12 @@ const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
+  // 포스팅이 많아지면 카테고리로 나누기.
+  // const set = new Set()
+  // posts.forEach(post => {
+  //   set.add(post.fields.slug.split("/")[1])
+  // })
+
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
@@ -45,12 +51,9 @@ const BlogIndex = ({ data, location }) => {
                   <small>{post.frontmatter.date}</small>
                 </header>
                 <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
+                  {post.frontmatter.description && (
+                    <p itemProp="description">{post.frontmatter.description}</p>
+                  )}
                 </section>
               </article>
             </li>
