@@ -32,68 +32,67 @@ d[i] = max(d[i-2]+i번째 스티커점수, d[i-1])
 
 하지만 위 점화식은 맨 처음 스티커를 떼는 경우를 만족시키지 못한다. 맨 처음 스티커를 떼는 경우 맨 마지막 스티커도 제거 되어야 하기 때문이다. 따라서 맨 처음 스티커를 떼는 경우, 맨 처음 스티커를 떼지 않는 경우 2가지로 나눠서 문제를 풀어보도록 한다.
 
-```
-if (sticker.length <= 2) return Math.max(...sticker);
+```javascript
+if (sticker.length <= 2) return Math.max(...sticker)
 ```
 
 만일 스티커의 개수가 2개 이하라면, 배열 내의 최댓값을 리턴하면 된다. 맨 처음 스티커를 떼지 않는 경우를 고려할 때 스티커 배열의 3번째 요소에 접근하기 때문에 위와 같이 처리해준다.
 
-```
-const len = sticker.length;
-const d = Array(len - 1).fill(0);
+```javascript
+const len = sticker.length
+const d = Array(len - 1).fill(0)
 
-d[0] = sticker[0];
-d[1] = d[0];
+d[0] = sticker[0]
+d[1] = d[0]
 for (let i = 2; i < d.length; i++) {
-    d[i] = Math.max(d[i - 2] + sticker[i], d[i - 1]);
+  d[i] = Math.max(d[i - 2] + sticker[i], d[i - 1])
 }
 
-const max_first = Math.max(...d);
+const max_first = Math.max(...d)
 ```
 
 첫 번째 스티커를 뜯어냈을 경우 코드는 위와 같다. `d[1] = d[0]`인 이유는 `d[1]`의 경우 스티커를 뜯어낼 수 없기 떄문에 `d[0]`의 값과 동일하게 넣어주어야 한다.
 
-```
-  const d2 = Array(len - 1).fill(0);
-  d2[0] = sticker[1];
-  d2[1] = Math.max(d2[0], sticker[2]);
+```javascript
+const d2 = Array(len - 1).fill(0)
+d2[0] = sticker[1]
+d2[1] = Math.max(d2[0], sticker[2])
 
-  for (let i = 2; i < d.length; i++) {
-    d2[i] = Math.max(d2[i - 2] + sticker[i + 1], d2[i - 1]);
-  }
-  const max_second = Math.max(...d2);
+for (let i = 2; i < d.length; i++) {
+  d2[i] = Math.max(d2[i - 2] + sticker[i + 1], d2[i - 1])
+}
+const max_second = Math.max(...d2)
 
-  return Math.max(max_first, max_second);
-
+return Math.max(max_first, max_second)
 ```
 
 첫 번째 스티커를 뜯어내지 않았을 경우 코드는 위와 같다. 첫 번째 스티커를 뜯지 않았기 때문에(제외시켰기 떄문에) 테이블은 스티커의 첫 번째 요소에서부터 시작하도록 한다. 그리고 `d2[1]`의 경우 만일 `sticker[2]`의 크기가 `d2[0]`의 크기보다 크다면, `sticker[2]`를 뜯는게 더 값이 크기 때문에 둘 중 큰 값을 가지도록 한다.
 
 # 전체 코드
 
-```
+```javascript
 function solution(sticker) {
-  if (sticker.length <= 2) return Math.max(...sticker);
+  if (sticker.length <= 2) return Math.max(...sticker)
 
-  const len = sticker.length;
-  const d = Array(len - 1).fill(0);
+  const len = sticker.length
+  const d = Array(len - 1).fill(0)
 
-  d[0] = sticker[0];
-  d[1] = d[0];
+  d[0] = sticker[0]
+  d[1] = d[0]
   for (let i = 2; i < d.length; i++) {
-    d[i] = Math.max(d[i - 2] + sticker[i], d[i - 1]);
+    d[i] = Math.max(d[i - 2] + sticker[i], d[i - 1])
   }
-  const max_first = Math.max(...d);
+  const max_first = Math.max(...d)
 
-  const d2 = Array(len - 1).fill(0);
-  d2[0] = sticker[1];
-  d2[1] = Math.max(d2[0], sticker[2]);
+  const d2 = Array(len - 1).fill(0)
+  d2[0] = sticker[1]
+  d2[1] = Math.max(d2[0], sticker[2])
 
   for (let i = 2; i < d.length; i++) {
-    d2[i] = Math.max(d2[i - 2] + sticker[i + 1], d2[i - 1]);
+    d2[i] = Math.max(d2[i - 2] + sticker[i + 1], d2[i - 1])
   }
-  const max_second = Math.max(...d2);
+  const max_second = Math.max(...d2)
 
-  return Math.max(max_first, max_second);
+  return Math.max(max_first, max_second)
 }
 ```
