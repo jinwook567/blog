@@ -12,81 +12,84 @@
 <h1>교훈</h1>
 <p>시간 복잡도를 기반으로 방법을 생각해내는 것도 좋지만, 문제의 특성에 따라 방법을 생각하고 시간 복잡도를 줄이는 방안도 생각해봐야 한다. (이진탐색, 우선순위 큐 등)</p>
 <h1>전체 코드</h1>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">class MaxHeap {
-  constructor() {
-    this.heap = [];
-  }
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">MaxHeap</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>heap <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
 
-  swap(aIndex, bIndex) {
-    [this.heap[aIndex], this.heap[bIndex]] = [this.heap[bIndex], this.heap[aIndex]];
-  }
+  <span class="token function">swap</span><span class="token punctuation">(</span><span class="token parameter">aIndex<span class="token punctuation">,</span> bIndex</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">;</span><span class="token punctuation">[</span><span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>aIndex<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>bIndex<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>bIndex<span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>aIndex<span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
 
-  push(value) {
-    this.heap.push(value);
-    let currentIndex = this.heap.length - 1;
-    let parentIndex = Math.floor((currentIndex - 1) / 2);
+  <span class="token function">push</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> currentIndex <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span>
+    <span class="token keyword">let</span> parentIndex <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>currentIndex <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span>
 
-    while (parentIndex >= 0 &amp;&amp; this.heap[parentIndex] &lt; value) {
-      this.swap(parentIndex, currentIndex);
-      currentIndex = parentIndex;
-      parentIndex = Math.floor((currentIndex - 1) / 2);
-    }
-  }
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>parentIndex <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>parentIndex<span class="token punctuation">]</span> <span class="token operator">&lt;</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>parentIndex<span class="token punctuation">,</span> currentIndex<span class="token punctuation">)</span>
+      currentIndex <span class="token operator">=</span> parentIndex
+      parentIndex <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>currentIndex <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
 
-  pop() {
-    if (this.heap.length === 0) return undefined;
-    if (this.heap.length === 1) return this.heap.pop();
+  <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">undefined</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-    const root = this.heap[0];
-    const end = this.heap.pop();
-    this.heap[0] = end;
+    <span class="token keyword">const</span> root <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+    <span class="token keyword">const</span> end <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> end
 
-    let currentIndex = 0;
-    let leftIndex = 1;
-    let rightIndex = 2;
+    <span class="token keyword">let</span> currentIndex <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">let</span> leftIndex <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token keyword">let</span> rightIndex <span class="token operator">=</span> <span class="token number">2</span>
 
-    while (
-      this.heap[currentIndex] &lt; this.heap[leftIndex] ||
-      this.heap[currentIndex] &lt; this.heap[rightIndex]
-    ) {
-      if (this.heap[leftIndex] &lt; this.heap[rightIndex]) {
-        this.swap(currentIndex, rightIndex);
-        currentIndex = rightIndex;
-      } else {
-        this.swap(currentIndex, leftIndex);
-        currentIndex = leftIndex;
-      }
-      leftIndex = currentIndex * 2 + 1;
-      rightIndex = currentIndex * 2 + 2;
-    }
-    return root;
-  }
-}
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>currentIndex<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>leftIndex<span class="token punctuation">]</span> <span class="token operator">||</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>currentIndex<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>rightIndex<span class="token punctuation">]</span>
+    <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>leftIndex<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>heap<span class="token punctuation">[</span>rightIndex<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>currentIndex<span class="token punctuation">,</span> rightIndex<span class="token punctuation">)</span>
+        currentIndex <span class="token operator">=</span> rightIndex
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>currentIndex<span class="token punctuation">,</span> leftIndex<span class="token punctuation">)</span>
+        currentIndex <span class="token operator">=</span> leftIndex
+      <span class="token punctuation">}</span>
+      leftIndex <span class="token operator">=</span> currentIndex <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span>
+      rightIndex <span class="token operator">=</span> currentIndex <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">2</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> root
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-function solution(n, works) {
-  const heap = new MaxHeap();
-  works.forEach((v) => heap.push(v));
+<span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">n<span class="token punctuation">,</span> works</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> heap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MaxHeap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  works<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">v</span> <span class="token operator">=></span> heap<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-  while (n > 0) {
-    const max = heap.pop();
-    n -= 1;
-    if (max === 0) return 0;
-    //만일 최댓값이 0이라면 해야할 일이 없다는 뜻으로 0을 리턴하고 함수를 종료한다.
-    heap.push(max - 1);
-  }
-  return heap.heap.reduce((acc, cur) => acc + cur * cur, 0);
-}</code></pre></div>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> max <span class="token operator">=</span> heap<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    n <span class="token operator">-=</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>max <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token comment">//만일 최댓값이 0이라면 해야할 일이 없다는 뜻으로 0을 리턴하고 함수를 종료한다.</span>
+    heap<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>max <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> heap<span class="token punctuation">.</span>heap<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">acc<span class="token punctuation">,</span> cur</span><span class="token punctuation">)</span> <span class="token operator">=></span> acc <span class="token operator">+</span> cur <span class="token operator">*</span> cur<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div>
 <h1>추가</h1>
 <p>재귀와 sort 메소드를 사용하는 방법을 생각해보았는데, sort 메소드의 경우 시간 복잡도가 NlogN이라서 효율성 테스트를 통과할 수 없었다. 코드는 아래와 같다.</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">function solution(n, works) {
-  function recursive(n, works) {
-    if (n === 0) return works.reduce((acc, cur) => acc + cur * cur, 0);
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">solution</span><span class="token punctuation">(</span><span class="token parameter">n<span class="token punctuation">,</span> works</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">recursive</span><span class="token punctuation">(</span><span class="token parameter">n<span class="token punctuation">,</span> works</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> works<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">acc<span class="token punctuation">,</span> cur</span><span class="token punctuation">)</span> <span class="token operator">=></span> acc <span class="token operator">+</span> cur <span class="token operator">*</span> cur<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
 
-    works.sort((a, b) => b - a);
-    if (works[0] === 0) return 0;
+    works<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> b <span class="token operator">-</span> a<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>works<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span>
 
-    works[0] -= 1;
-    return recursive(n - 1, works);
-  }
-  return recursive(n, works);
-}</code></pre></div></section><hr/><footer><div class="bio"></div></footer></article><nav class="blog-post-nav"><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/blog/알고리즘/스티커모으기/">← <!-- -->스티커 모으기<!-- --></a></li><li></li></ul></nav></main><footer>© <!-- -->2022<!-- -->, Built with<!-- --> <!-- --><a href="https://www.gatsbyjs.com">Gatsby</a></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/알고리즘/야근지수/";window.___webpackCompilationHash="410634792a8c6ed65c9d";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-afa68794cf9a69af341a.js"],"app":["/app-27998ba89caa9b3c7e92.js"],"component---src-pages-404-js":["/component---src-pages-404-js-e2f7f6ca5651b6fe7830.js"],"component---src-pages-index-js":["/component---src-pages-index-js-3ed2d7f18b876aa7327f.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-ee8bf947a69203d2e362.js"]};/*]]>*/</script><script src="/blog/polyfill-afa68794cf9a69af341a.js" nomodule=""></script><script src="/blog/app-27998ba89caa9b3c7e92.js" async=""></script><script src="/blog/framework-f73ef3c6bec90e8f292a.js" async=""></script><script src="/blog/webpack-runtime-7f3add95685d8251eefd.js" async=""></script></body></html>
+    works<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-=</span> <span class="token number">1</span>
+    <span class="token keyword">return</span> <span class="token function">recursive</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> works<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token function">recursive</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> works<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></div></section><hr/><footer><div class="bio"></div></footer></article><nav class="blog-post-nav"><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/blog/알고리즘/스티커모으기/">← <!-- -->스티커 모으기<!-- --></a></li><li></li></ul></nav></main><footer>© <!-- -->2022<!-- -->, Built with<!-- --> <!-- --><a href="https://www.gatsbyjs.com">Gatsby</a></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/알고리즘/야근지수/";window.___webpackCompilationHash="410634792a8c6ed65c9d";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-afa68794cf9a69af341a.js"],"app":["/app-27998ba89caa9b3c7e92.js"],"component---src-pages-404-js":["/component---src-pages-404-js-e2f7f6ca5651b6fe7830.js"],"component---src-pages-index-js":["/component---src-pages-index-js-3ed2d7f18b876aa7327f.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-ee8bf947a69203d2e362.js"]};/*]]>*/</script><script src="/blog/polyfill-afa68794cf9a69af341a.js" nomodule=""></script><script src="/blog/app-27998ba89caa9b3c7e92.js" async=""></script><script src="/blog/framework-f73ef3c6bec90e8f292a.js" async=""></script><script src="/blog/webpack-runtime-7f3add95685d8251eefd.js" async=""></script></body></html>
