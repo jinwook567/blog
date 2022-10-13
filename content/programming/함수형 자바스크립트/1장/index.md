@@ -1,7 +1,7 @@
 ---
 title: 함수형 자바스크립트
 date: 2022-10-12
-description: 책 정리 1장
+description: 1장 함수형으로 사고하기
 ---
 
 # 함수형 프로그래밍이란?
