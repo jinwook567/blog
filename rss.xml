@@ -1,4 +1,83 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[Gatsby Starter Blog RSS Feed]]></description><link>https://jinwook567.github.io/blog</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 17 Oct 2022 12:41:27 GMT</lastBuildDate><item><title><![CDATA[이펙티브 타입스크립트 1장]]></title><description><![CDATA[…]]></description><link>https://jinwook567.github.io/blog/programming/이펙티브타입스크립트/1장/</link><guid isPermaLink="false">https://jinwook567.github.io/blog/programming/이펙티브타입스크립트/1장/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;타입스크립트와 자바스크립트의 관계&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[Gatsby Starter Blog RSS Feed]]></description><link>https://jinwook567.github.io/blog</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 18 Oct 2022 11:00:03 GMT</lastBuildDate><item><title><![CDATA[이펙티브 타입스크립트 2장]]></title><description><![CDATA[편집기를 사용하여 타입 시스템 탐색하기 많은 개발자들이 vscode를 이용하는데 typescript를 제작한 ms에서 만든 것이다. 따라서 vscode를 사용하면 typescript…]]></description><link>https://jinwook567.github.io/blog/programming/이펙티브타입스크립트/2장/</link><guid isPermaLink="false">https://jinwook567.github.io/blog/programming/이펙티브타입스크립트/2장/</guid><pubDate>Tue, 18 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;편집기를 사용하여 타입 시스템 탐색하기&lt;/h1&gt;
+&lt;p&gt;많은 개발자들이 vscode를 이용하는데 typescript를 제작한 ms에서 만든 것이다. 따라서 vscode를 사용하면 typescript의 언어 서비스를 잘 활용할 수 있다.&lt;/p&gt;
+&lt;p&gt;편집기를 통해서 어떻게 타입 시스템이 동작하는지, 타입스크립트가 어떻게 타입을 추론하는지 개념을 잡을 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; num &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//num은 number로 자동으로 추론한다.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Go to Definition 기능을 통해서 타입 선언 파일로 이동할 수 있고, 타입 선언 파일을 보면서 어떻게 모델링 되었는지 파악할 수 있다.&lt;/p&gt;
+&lt;h1&gt;타입이 값들의 집합이라고 생각하기&lt;/h1&gt;
+&lt;p&gt;타입이 값들의 집합이라고 생각하라는 의미는 무엇일까. 1,2,3이라는 값들은 number라는 타입에 해당된다. 즉 1,2,3이라는 숫자 값들의 집합은 number 타입에 해당된다는 것이다. 1000도 숫자 값의 집합의 요소이기 때문에 number 타입에 해당된다.&lt;/p&gt;
+&lt;h2&gt;타입의 종류&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;never 타입
+&lt;ul&gt;
+&lt;li&gt;공집합으로, never에는 아무런 값도 할당할 수 없다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;유닛 타입 혹은 리터럴 타입
+&lt;ul&gt;
+&lt;li&gt;한 가지 값만 포함하는 타입이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;A&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;a&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;B&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;b&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;유니온 타입 - 값 집합들의 합집합을 말한다.
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;AB&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;A&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;B&quot;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;AB12&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;A&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;B&quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;집합의 범위가 한정되어 있지 않은 타입들
+&lt;ul&gt;
+&lt;li&gt;number, string 등의 타입은 범위가 무한대이다. 나올 수 있는 경우의 수가 무수히 많기 때문이다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;서브 타입
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;PersonSpan&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  birth&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Date
+  death&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Date
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+PersonSpan은 Person의 서브타입이라고 할 수 있다. PersonSpan은 Person의 모든 조건을 만족해야한다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;키워드&lt;/h2&gt;
+&lt;h3&gt;&amp;#x26;&lt;/h3&gt;
+&lt;p&gt;두 타입의 인터섹션(교집합)을 계산한다. 예시를 통해서 알아보도록 한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;LifeSpan&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  birth&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Date
+  death&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; Date
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;PersonSpan&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Person &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; LifeSpan
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; ps&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; PersonSpan &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  name&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;hi&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  birth&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위의 PersonSpan의 경우 두 인터페이스가 공통적으로 가지는 속성이 없기 때문에 공집합이라고 생각할 수 있지만 이것은 틀린 것이다. 덕 타이핑으로 인해서 Person 인터페이스의 경우 어떤 객체가 name 속성을 보유하고 그것이 문자열이면 모두 만족한다. LifeSpan 인터페이스의 경우 마찬가지로 birth의 속성이 날짜인 객체도 전부 만족한다. 따라서 교집합이므로, name 속성과 birth 속성 2개다 존재해야 하는 것이다.&lt;/p&gt;
+&lt;p&gt;하지만 유니온에 대해서는 다른 형태를 보여준다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;union&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Person &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; LifeSpan
+
+&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;K&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;keyof&lt;/span&gt; union
+&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;&lt;span class=&quot;token constant&quot;&gt;M&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;Person &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; LifeSpan&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;K는 never이고, M은 &lt;code class=&quot;language-text&quot;&gt;name | birth | death&lt;/code&gt;이다.
+K가 never인 이유는 union의 키는 (name) | (birth | death) 인데 둘 중 무슨 값이 될지 모르기 때문에 2개 다 만족하는 값이 나와야한다(?)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;keyof&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;keyof&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;keyof&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;extends&lt;/h3&gt;
+&lt;p&gt;extends 키워드를 활용하여 서브 타입을 만들어낼 수 있다.&lt;/p&gt;
+&lt;p&gt;extends 키워드는 제너릭 타입에서 한정자로도 쓰인다. 해당 문맥에서는 ~의 부분 집합을 의미하기도 한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token generic-function&quot;&gt;&lt;span class=&quot;token function&quot;&gt;getKey&lt;/span&gt;&lt;span class=&quot;token generic class-name&quot;&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token constant&quot;&gt;K&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;val&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; key&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token comment&quot;&gt;//....&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token function&quot;&gt;getKey&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;val&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;getKey&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;val&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token comment&quot;&gt;//오류가 발생한다. K는 string의 부분 집합이므로.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h1&gt;타입 공간과 값 공간의 심벌 구분하기&lt;/h1&gt;
+&lt;p&gt;p.46 이어서 작성해야함.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[이펙티브 타입스크립트 1장]]></title><description><![CDATA[…]]></description><link>https://jinwook567.github.io/blog/programming/이펙티브타입스크립트/1장/</link><guid isPermaLink="false">https://jinwook567.github.io/blog/programming/이펙티브타입스크립트/1장/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;타입스크립트와 자바스크립트의 관계&lt;/h1&gt;
 &lt;p&gt;타입스크립트는 자바스크립트의 상위 집합이다. 즉 모든 자바스크립트 프로그램은 타입스크립트 프로그램이다. 하지만 타입스크립트의 경우 타입 선언 등 별도의 문법을 가지고 있기 때문에 유효한 자바스크립트 프로그램이라고는 할 수 없다. 자바스크립트가 타입스크립트 프로그램이기에 마이그레이션 하는데 큰 이점을 가진다.&lt;/p&gt;
 &lt;h2&gt;타입 시스템&lt;/h2&gt;
 &lt;p&gt;타입스크립트는 자바스크립트에 타입 시스템을 더한 것이다. 타입 시스템의 목표 중 하나는 런타임에 오류를 발생시킬 코드를 미리 찾아내는 것이다. ‘정적’타입 시스템이라는 것은 바로 이런 특징을 말하는 것이다. 하지만 타입 체커가 모든 오류를 찾아내지는 않으니 유의해야한다.&lt;/p&gt;
@@ -150,7 +229,67 @@ age &lt;span class=&quot;token operator&quot;&gt;+=&lt;/span&gt; one
 
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; a &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;3&quot;&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;number&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; b &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;
-&lt;span class=&quot;token function&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//정상적으로 작동함.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[브라우저에 대해서]]></title><description><![CDATA[브라우저 목적 브라우저의 주요 기능은 사용자가 명시한 자원을 서버에 요청하고 이를 브라우저에 표시하는 것이다.
+&lt;span class=&quot;token function&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;a&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; b&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;//정상적으로 작동함.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;언어 서비스가 적용되지 않는다.&lt;/h2&gt;
+&lt;p&gt;자동완성 기능 제공하지 않는다. 또한 Rename Symbol 기능을 사용하면 프로그램 내 모든 속성의 이름을 변경해주지만 any 타입이라면 적용되지 않는다.&lt;/p&gt;
+&lt;h2&gt;타입 설계를 감춘다.&lt;/h2&gt;
+&lt;p&gt;상태 객체의 설계를 감추기 때문에, 설계가 어떻게 되어있는지 전혀 알 수 없다. 내가 아닌 다른 사람이 코드를 본다면 파악하기 위해 코드를 재구성 해봐야 한다.&lt;/p&gt;
+&lt;h2&gt;신뢰도를 떨어트린다.&lt;/h2&gt;
+&lt;p&gt;런타임 오류가 더 자주 발생한다. 또한 타입 오류를 고쳐야하고 머릿속에 실제 타입을 기억해야 하기 때문에 번거롭다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[React의 전역 상태 관리]]></title><description><![CDATA[React…]]></description><link>https://jinwook567.github.io/blog/tech/React/GlobalState/</link><guid isPermaLink="false">https://jinwook567.github.io/blog/tech/React/GlobalState/</guid><pubDate>Mon, 17 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;React에서 전역 상태 관리는 왜 필요할까?&lt;/h1&gt;
+&lt;p&gt;리액트는 단방향 데이터 바인딩이라는 특징을 가진다. 단방향 데이터 바인딩 특징은 어플리케이션이 예측 가능하다는 장점이 있지만, 뷰를 업데이트 해주는 부분을 매번 작성해주어야 한다는 단점이 있다. 리액트의 경우 뷰가 state에 따라서 자동으로 갱신되어 뷰를 업데이트 해주는 코드를 작성할 필요는 없지만, 이 state를 어플리케이션 구조에 맞게 잘 전달해주는 과정이 필요하다. 만일 컴포넌트 구조가 매우 깊은 트리 구조라면 해당 state를 넘겨주는데 여러 단계를 거쳐야하고, 이 state가 어디서부터 전달되었는지 추적하기 어려울 것이다.&lt;/p&gt;
+&lt;p&gt;이러한 문제를 해결하기위해 전역 상태 관리 도구는 어떠한 컴포넌트에서도 전역으로 관리되는 state에 바로 접근할 수 있도록 해준다. state를 전달하기위해 여러 단계를 거칠 필요가 없는 것이다.&lt;/p&gt;
+&lt;p&gt;해당 상태가 어플리케이션 전반에 이용되어 상태를 전달하기 위한 단계가 복잡할 경우, 혹은 전반에 이용되지 않더라도 상태를 전달하기 위한 단계가 복잡할 경우 사용된다.&lt;/p&gt;
+&lt;h1&gt;전역 상태 관리를 위한 도구들&lt;/h1&gt;
+&lt;h2&gt;Redux&lt;/h2&gt;
+&lt;p&gt;리덕스는 리액트 이외에도 자바스크립트로 만들어진 어플리케이션이라면 사용할 수 있다.&lt;/p&gt;
+&lt;p&gt;리덕스는 액션이라고 불리는 이벤트를 통해서만 state를 업데이트 시킬 수 있다. 이는 리액트가 사용하는 단방향 데이터 바인딩과 같은 원리로 상태 변경을 예측하기 쉽도록 한다. 언제, 어디서, 왜, 어떻게 state가 변경되었는지 파악할 수 있다.&lt;/p&gt;
+&lt;p&gt;리덕스의 이러한 구조는 상태의 변경이 예측 가능하다는 장점도 있지만, 러닝 커브가 있고 구현하기위해 더 많은 코드를 작성해야한다.&lt;/p&gt;
+&lt;h3&gt;언제 리덕스를 도입하면 좋을까&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;어플리케이션이 많은 상태를 보유하고, 어플리케이션의 여러 공간에서 사용될 때&lt;/li&gt;
+&lt;li&gt;상태가 매우 자주 변경될 때&lt;/li&gt;
+&lt;li&gt;상태 변경 로직이 복잡할 때&lt;/li&gt;
+&lt;li&gt;어플리케이션의 규모가 클 때, 많은 사람들과 작업해야 할 때&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;예측 가능하고, 테스트가 쉽다는 장점에 대규모 어플리케이션에 적합하다. 또한 상태 변경을 손쉽게 추적할 수 있기에 상태 변경 로직이 복잡할 때도 사용하면 좋다.&lt;/p&gt;
+&lt;h3&gt;주요 개념&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;스토어는 전역 state를 저장하는 곳으로 자바스크립트 object인데 특별한 함수와 기능을 내장하고 있어 순수 전역 객체와 다르다.&lt;/li&gt;
+&lt;li&gt;우리는 스토어 내부의 state를 직접적으로 수정하면 안된다. 이는 정해진 방식으로만 state를 조작하여 예측가능하다는 redux의 원칙을 위배한다.&lt;/li&gt;
+&lt;li&gt;state를 변경하는 방법은 순수 액션 객체를 만들고 활용함으로써 가능하다. 액션 객체는 어플리케이션에 무슨 일이 발생할 것인지 알려준다. 그리고 dispatch를 사용해서, action을 전달한다.&lt;/li&gt;
+&lt;li&gt;액션이 dispatch되면, reducer를 실행시키고 old state를 기반으로 new state를 계산하여 업데이트한다. old state에서 new state로 변경시킬 때 immutable을 유지해야한다. 만약 immutable하지 않다면 old state와 new state를 비교할 때 문제가 발생하고 리듀서가 올바르게 작동하지 않는다. (객체는 참조값이기 때문에.)&lt;/li&gt;
+&lt;li&gt;마지막으로 스토어는 subscribers에게 구독중인 state가 변경되었다고 알려주고 UI가 변경되게 된다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Recoil&lt;/h2&gt;
+&lt;p&gt;Recoil은 facebook에서 출시한 상태관리 라이브러리이다.&lt;/p&gt;
+&lt;p&gt;state는 공통된 상위 컴포넌트로 끌어올려야만 공유될 수 있으며 이 과정에서 거대한 트리가 다시 렌더링 되는 문제와 Context는 단일값만 저장할 수 있으며, 자체 소비자를 가지는 여러 값들의 집합을 담을 수 없다는 문제를 해결하기위해 탄생했다.&lt;/p&gt;
+&lt;h3&gt;Recoil의 특징&lt;/h3&gt;
+&lt;p&gt;boiler-plate free api로 redux는 간단한 상태 한개만 처리하려고 해도 수많은 보일러 플레이트 코드가 필요하였으나 recoil은 매우 간단하게 사용할 수 있다. 즉 러닝커브가 낮다고 할 수 있다.
+또한 비동기처리를 하기 위해서 redux의 경우는 redux-thunk와 같은 비동기 처리 라이브러리에 의존했지만 recoil에는 내장되어 있다.&lt;/p&gt;
+&lt;h3&gt;주요 개념&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;atoms
+&lt;ul&gt;
+&lt;li&gt;atoms는 상태의 단위이며 업데이트와 구독이 가능하다. atom이 업데이트되면 각각의 구독된 컴포넌트는 새로운 값을 받아 리렌더링 된다. atoms는 런타임 중에서도 생성될 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;selectors
+&lt;ul&gt;
+&lt;li&gt;atoms나 다른 selectors를 입력으로 받아들이는 순수 함수다. 상위의 atoms 또는 selectors가 업데이트되면 하위의 selector 함수도 다시 실행된다. 컴포넌트들은 selectors를 atoms처럼 구독할 수 있으며 selectors가 변경되면 컴포넌트들도 다시 렌더링된다. selectors는 상태를 기반으로 파생된 데이터를 사용하는데 이용된다. &lt;strong&gt;최소한의 상태 집합만 atoms에 저장하고 파생된 데이터는 selectos를 통해서 처리함으로써 불필요한 상태의 보존을 방지할 수 있다.&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Context api&lt;/h2&gt;
+&lt;p&gt;Context api는 react에 자체적으로 내장된 전역 상태 관리 도구이다.&lt;/p&gt;
+&lt;h3&gt;언제 Context api를 사용하면 좋을까?&lt;/h3&gt;
+&lt;p&gt;상태 변경이 빈번하게 일어나지 않을 때, 간단한 데이터를 전역으로 공유하고 싶을 때 사용하면 좋다. Provider의 모든 하위 컴포넌트가 렌더링이 일어나기 때문이다. 예시로 언어 설정이나, 다크 모드 변경과 같은 스타일 설정을 저장해놓는데 적합하다.&lt;/p&gt;
+&lt;h1&gt;API Response 캐싱을 위한 전역 상태 관리 이용&lt;/h1&gt;
+&lt;p&gt;위투디 정식 서비스를 제작할 때, 나는 API Response를 캐싱하기로 했다. 기존에는 local state,useEffect로 구현되어 있어 컴포넌트가 렌더링 될 때마다 api를 요청했다. 유저 입장에서는 이미 한번 불러온 데이터를 다시 불러오는데 불필요한 로딩 시간이 생겼고, 성능적으로도 불필요한 네트워크 요청을 하기에 좋지 않았기 때문이다.&lt;/p&gt;
+&lt;p&gt;초기에 Redux를 선택했다. 하지만 Redux는 비동기 처리가 불가능하기에 redux-thunk와 같은 비동기 미들웨어를 사용해야 하였고, 하나의 api 결과값을 캐싱하는데 매우 많은 코드가 필요하였다. 또한 redux를 활용하여 캐싱할 경우 결과값이 언제까지 유효할지에 대해서도 직접 설정을 해주어야했다.&lt;/p&gt;
+&lt;p&gt;이후에는 react-query라는 라이브러리를 사용했다. redux와 같은 많은 보일러플레이트 코드들이 필요없었고, 유효 시간을 정해줄 수 있어 매우 유용했다. 또한 최근에는 Suspense와 연동이 되기에 데이터를 fetch 할 동안 fallback-ui를 보여줄 수 있다. 매번 컴포넌트마다 loading 관련 분기를 만들어 처리하지 않아도 된다. 마치 try-catch 구문처럼 관심사를 분리하여 더 효율적이고 가독성 높은 코드를 만들 수 있는 것이다.&lt;/p&gt;
+&lt;p&gt;recoil의 경우, 비동기 처리를 별도의 라이브러리 없이 할 수 있고 fetch 중에는 Promise를 리턴하기에 Suspense 기능도 react-query와 마찬가지로 적용할 수 있다.&lt;/p&gt;
+&lt;p&gt;만일 API Response를 캐싱하기 위해서 Redux를 선택한다면, 나는 기술에 대한 올바른 선택이 아니라고 말하고 싶다. Redux는 위에서 작성했듯 상태 변경이 빈번하게 일어나고, 상태 변경이 매우 복잡할 때 사용하면 좋다. 나의 경우 웹기반 디자인 에디터를 만들 때 리덕스를 활용했는데 리덕스의 특징에 따라 상태 변경이 매우 예측가능 하였고, 상태 변경을 쉽게 추적할 수 있다는 장점이 있었다.&lt;/p&gt;
+&lt;p&gt;기술의 특징과 컨셉을 파악하고, 상황에 맞게 올바른 기술을 선택한다면 개발 생산성 향상을 통해 많은 시간을 세이브 할 수 있을 것이다!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[브라우저에 대해서]]></title><description><![CDATA[브라우저 목적 브라우저의 주요 기능은 사용자가 명시한 자원을 서버에 요청하고 이를 브라우저에 표시하는 것이다.
 대부분 HTML 문서이며, 브라우저는 HTML 파일을 해석하여 화면에 보여주는 역할을 한다.
 헤석 과정에서 요즘 브라우저는 W3C…]]></description><link>https://jinwook567.github.io/blog/cs/web/브라우저/</link><guid isPermaLink="false">https://jinwook567.github.io/blog/cs/web/브라우저/</guid><pubDate>Sat, 15 Oct 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;브라우저 목적&lt;/h1&gt;
 &lt;p&gt;브라우저의 주요 기능은 사용자가 명시한 자원을 서버에 요청하고 이를 브라우저에 표시하는 것이다.
