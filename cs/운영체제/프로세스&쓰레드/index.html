@@ -7,7 +7,7 @@
 <ol>
 <li>code 영역 - 실행한 프로그램의 코드가 저장되는 메모리 영역</li>
 <li>data 영역 - 프로그램의 전역 변수가 저장되는 영역</li>
-<li>heap 영역 - 동적으로 할당되는 메모리 영역 (좀 더 탐구 필요.)</li>
+<li>heap 영역 - 동적으로 할당되는 메모리 영역</li>
 <li>stack 영역 - 함수 호출 시 생성되는 지역변수, 매개변수가 저장되는 영역</li>
 </ol>
 <h2>프로세스 제어 블록(Process Control Block, PCB)</h2>
@@ -22,7 +22,48 @@
 </ul>
 <h2>멀티 프로세스</h2>
 <p>멀티 프로세스란 2개 이상의 프로세스가 동시에 실행되는 것을 의미한다. 동시에 실행하는 방법은 2가지이다. 1개의 CPU Core를 사용하여 여러개의 프로세스를 빠르게 전환하며 처리하는 방식, 여러개의 CPU Core를 사용하여 각각의 process를 처리하는 방식이다.</p>
+<h2>멀티 프로세스간 데이터 통신 방법</h2>
+<p>멀티 프로세스에서 프로세스끼리 원칙적으로는 데이터를 공유할 수 없다. 프로세스는 독립적인 주소 공간을 갖기 때문이다. 하지만 경우에 따라 운영체제는 프로세스 간 통신(IPC)를 제공한다. IPC 방식에는 공유 메모리 방식과 메시지 전달 방식이 있다.</p>
+<h3>공유 메모리 방식</h3>
+<p>process들이 주소 공간 일부를 공유한다. 공유한 메모리에 읽기/쓰기를 통해서 통신을 수행한다. 커널의 관여 없이 데이터를 통신할 수 있기 때문에 속도가 빠르다는 장점이 있지만, 동시에 같은 메모리 위치에 접근하게 되면 일관성 문제가 발생할 수 있다.</p>
+<h3>메시지 전달 방식</h3>
+<p>커널을 통해서 데이터를 전달해준다. 커널이 개입하기에 속도가 느리다는 단점이 있지만, 일관성 문제가 발생하지 않기 때문에 적은 데이터를 공유할 때 유리하다.</p>
+<p><em>커널이란 운영체제 중에서 항상 메모리에 올라가 있는 운영체제의 핵심 부분으로 컴퓨터 자원들을 관리하는 역할을 수행한다. 컴퓨터 자원으로는 CPU,메모리,파일,네트워크 등이 있다.</em></p>
 <h2>CPU의 처리 방식</h2>
 <p>CPU는 PC Register라는 다음에 실행될 명령어가 저장된 주솟값을 참조하여 연산을 수행한다. 프로세스가 전환될 때, 다른 프로세스의 PC Register가 등록된다.</p>
+<h2>Context Switch</h2>
+<p>한 프로세스에서 다른 프로세스로 CPU 제어권을 넘겨주는 것을 말한다. 이전의 프로세스 상태를 PCB에 저장하여 보관하고 새로운 프로세스의 PCB를 읽어서 보관된 상태를 복구한다.</p>
 <h1>쓰레드</h1>
-<p>쓰레드는 프로세스의 실행의 단위라고 할 수 있다.</p></section><hr/><footer><div class="bio"></div></footer></article><nav class="blog-post-nav"><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/blog/tech/React/GlobalState/">← <!-- -->React의 전역 상태 관리<!-- --></a></li><li><a rel="next" href="/blog/programming/이펙티브타입스크립트/2장/">이펙티브 타입스크립트 2장<!-- --> →<!-- --></a></li></ul></nav></main><footer>© <!-- -->2022<!-- -->, Built with<!-- --> <!-- --><a href="https://www.gatsbyjs.com">Gatsby</a></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/cs/운영체제/프로세스&쓰레드/";window.___webpackCompilationHash="410634792a8c6ed65c9d";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-afa68794cf9a69af341a.js"],"app":["/app-27998ba89caa9b3c7e92.js"],"component---src-pages-404-js":["/component---src-pages-404-js-e2f7f6ca5651b6fe7830.js"],"component---src-pages-index-js":["/component---src-pages-index-js-3ed2d7f18b876aa7327f.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-ee8bf947a69203d2e362.js"]};/*]]>*/</script><script src="/blog/polyfill-afa68794cf9a69af341a.js" nomodule=""></script><script src="/blog/app-27998ba89caa9b3c7e92.js" async=""></script><script src="/blog/framework-f73ef3c6bec90e8f292a.js" async=""></script><script src="/blog/webpack-runtime-7f3add95685d8251eefd.js" async=""></script></body></html>
+<p>쓰레드는 프로세스의 실행의 단위라고 할 수 있다. 한 프로세스 내에서 동작되는 여러 실행 흐름으로 프로세스 내의 주소 공간이나 자원을 공유할 수 있다. (스택을 제외한 나머지 메모리 영역을 공유)</p>
+<h2>stack을 스레드마다 독립적으로 할당하는 이유</h2>
+<p><strong>thread는 프로세스 내에서 독립적으로 기능을 실행한다. 즉 독립적으로 함수를 호출함을 의미한다.</strong> 독립적으로 동작하기 위해서는 thread의 stack memory 영역이 독립적이여야 한다.</p>
+<h2>PC Register를 스레드마다 독립적으로 할당하는 이유</h2>
+<p>한 프로세스 내에서도 thread끼리 context switch가 일어나기 때문에.</p>
+<h2>멀티 쓰레드</h2>
+<p>하나의 process 내에서도 여러 작업이 있다. 이런 작업들을 병렬적으로 처리하기 위해서 multi thread를 사용한다.</p>
+<h2>멀티 쓰레드의 장점</h2>
+<p>프로세스를 이용하여 동시에 처리하던 일을 쓰레드로 구현할 경우 메모리 공간과 시스템 자원 소모가 줄어든다. 쓰레드간의 통신이 필요한 경우 별도의 자원을 사용하지 않고 메모리 영역을 공유하기 때문이다. 즉 프로세스 간의 통신 방법에 비해 쓰레드 간의 통신 방법이 훨씬 간단하다. 쓰레드의 context switch는 프로세스의 context switch와 달리 캐시 메모리를 비울 필요가 없기 때문에 더 빠르다.</p>
+<h2>멀티 쓰레드의 문제점</h2>
+<p>멀티 프로세스는 프로세스간 공유하는 자원이 없기 때문에 동일한 자원에 동시에 접근하는 일이 없었지만 멀티 쓰레드는 이 부분을 신경써줘야한다. 어떤 쓰레드가 다른 쓰레드에서 사용중인 변수나 자료구조에 접근하여 엉뚱한 값을 읽어오거나 수정할 수 있다. 따라서 멀티 쓰레드 환경에서는 동기화 작업이 필요하다.</p>
+<p>또한 멀티 쓰레드는 적은 메모리 공간과 Context Switch가 빠르다는 장점이 있지만 오류로 인해 하나의 쓰레드가 죽으면 전체 쓰레드가 죽을 수 있다.</p>
+<h3>동기화 문제 해결 방안</h3>
+<p>mutex, semaphore 기법을 사용하여 해결할 수 있다.</p>
+<p>mutex란 1개의 스레드만이 공유 자원에 접근할 수 있도록 하여 경쟁 상황을 방지하는 기법이다. 하나의 쓰레드가 공유 자원에 접근하여 lock을 걸면, 다른 쓰레드는 lock이 풀릴 때 까지 해당 자원에 접근할 수 없다.</p>
+<p>semaphore란 S개의 thread만이 공유 자원에 접근할 수 있도록 하여 경쟁 상황을 방지하는 기법이다. 하나의 쓰레드가 자원에 접근할 떄마다 세마포 값을 감소시키고, 자원을 방출할 때는 세마포 값을 증가시킨다. 이 때 세마포의 값이 0이 되면 모든 자원이 사용 중임을 의미하고 0보다 커질 때까지 자원 사용을 block한다.</p>
+<h1>교착상태(데드락)</h1>
+<p>두 개 이상의 작업이 서로 상대방의 작업이 끝나기만을 기다리고 있기 때문에 결과적으로 아무것도 완료되지 못하는 상태로, 2개 이상의 thead가 각기 자원을 점유하고 있고, 서로의 자원을 기다릴 때 무한 대기가 발생한다.</p>
+<h2>데드락이 발생할 조건 4가지</h2>
+<ol>
+<li>
+<p>상호 배제</p>
+</li>
+<li>
+<p>점유 대기</p>
+</li>
+<li>
+<p>비선점</p>
+</li>
+<li>
+<p>순환 대기</p>
+</li>
+</ol></section><hr/><footer><div class="bio"></div></footer></article><nav class="blog-post-nav"><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/blog/tech/React/GlobalState/">← <!-- -->React의 전역 상태 관리<!-- --></a></li><li><a rel="next" href="/blog/programming/이펙티브타입스크립트/2장/">이펙티브 타입스크립트 2장<!-- --> →<!-- --></a></li></ul></nav></main><footer>© <!-- -->2022<!-- -->, Built with<!-- --> <!-- --><a href="https://www.gatsbyjs.com">Gatsby</a></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/cs/운영체제/프로세스&쓰레드/";window.___webpackCompilationHash="410634792a8c6ed65c9d";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-afa68794cf9a69af341a.js"],"app":["/app-27998ba89caa9b3c7e92.js"],"component---src-pages-404-js":["/component---src-pages-404-js-e2f7f6ca5651b6fe7830.js"],"component---src-pages-index-js":["/component---src-pages-index-js-3ed2d7f18b876aa7327f.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-ee8bf947a69203d2e362.js"]};/*]]>*/</script><script src="/blog/polyfill-afa68794cf9a69af341a.js" nomodule=""></script><script src="/blog/app-27998ba89caa9b3c7e92.js" async=""></script><script src="/blog/framework-f73ef3c6bec90e8f292a.js" async=""></script><script src="/blog/webpack-runtime-7f3add95685d8251eefd.js" async=""></script></body></html>
