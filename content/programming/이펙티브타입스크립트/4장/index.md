@@ -285,3 +285,109 @@ string 타입보다 구체적인 타입을 사용해야 하는 이유는 string 
    const dates3 = pluck3(albums, "releaseDate")
    //dates3의 타입은 Date[]이다. 언어 서비스를 이용하며 명확하게 좁혀진 타입의 결과를 얻어낼 수 있다.
    ```
+
+# 부정확한 타입보다는 미완성 타입을 사용하기
+
+타입의 선언의 정밀도를 높이는 일에는 주의를 기울여야 한다. 실수가 발생할 수 있고 잘못된 타입은 있는 것 보다 못하기 때문이다.
+
+```ts
+interface Geometry {
+  coordinate: number[] | number[][] | number[][][]
+}
+```
+
+위와 같은 코드에서 coordinate가 위도, 경도로 이루어져있다고 생각하고 타입이 너무 크다고 판단하여 [number, number] 타입으로 변형하였다. 기존에 고도라는 개념이 있어 number[]라고 표현이 되어있던 것이고, 모든 코드에 오류가 발생하게 된다.
+
+타입을 정교하게 만들어서 부정확함을 바로잡는 방법 대신 테스트를 추가하여 놓친 부분이 없는지 확인하는 방식을 사용해도 좋다. 타입을 정제할 때, 볼쾌한 골짜기 은유를 생각해보면 도움이 될 수 있다.
+
+# 데이터가 아닌 API와 명세를 보고 타입 만들기
+
+API 명세서를 읽어보지 않고 데이터만을 받아서 타입을 작성했을 때 예상치않은 오류가 발생할 수 있다.
+API 명세서를 참고해서 타입을 만들거나, 공식 타입 선언을 다운로드 받아서 사용하면 좋다.
+
+# 해당 분야의 용어로 타입 이름 짓기
+
+해당 분야의 용어는 몇십년에 지나면서 다듬어져 왔다. 가독성을 더 높여준다.
+
+또한 이미 체계적으로 분류가 잡혀져 있는 경우가 있다. 기후라는 타입을 정의하기 위해서는 미리 정의된 쾨펜 기후 분류 등을 사용하면 편리하고 유지보수에 용이하다.
+유지보수에 용이한 이유는 코드를 작성한 사람에게 조언을 구할 필요가 없기 때문이다.
+
+동일한 의미를 나타날 때는 꼭 같은 단어를 사용해야한다.
+
+# 공식 명칭에는 상표 붙이기
+
+구조적 타이핑의 특성 때문에 가끔 코드가 이상한 결과를 낼 수 있다.
+
+```ts
+interface Vector2D {
+  x: number
+  y: number
+}
+
+function calculateNorm(p: Vector2D) {
+  return Math.sqrt(p.x * p.x + p.y * p.y)
+}
+
+const vector3D = { x: 1, y: 2, z: 5 }
+calculateNorm(vector3D)
+```
+
+위의 코드는 구조적 타이핑 관점에서 오류가 발생하지 않는다. 하지만 수학적으로 따지면 2차원 벡터를 사용하는 것이 이치에 맞다.
+3차원 벡터를 허용하지 않게 하려면 공식 명칭을 사용하면 된다.
+값의 관점에서 vector2D라고 정의해주는 것이다. 타입스크립트에서 흉내내기 위해서는 상표를 붙이면 된다.
+
+```ts
+interface Vector2D {
+  _brand: "2d"
+  x: number
+  y: number
+}
+
+calculateNorm({ x: 1, y: 2, _brand: "2d" }) //1
+calculateNorm({ x: 1, y: 2, z: 5, _brand: "2d" }) //2
+```
+
+2번째 함수 호출부에서 처럼 악의적으로 공식 명칭을 흉내내는 것을 방지하지는 못한다. 다만 프로그래머에게 실수를 알려주기에는 충분하다.
+
+상표 기법은 타입 시스템에서 동작하지만 런타임에 상표를 검사하는 것과 동일한 효과를 얻을 수 있다. 타입 시스템으로 런타임 오버헤드가 없고 속성이 없는 string 또는 number와 같은 내장 타입도 상표화 할 수 있다.
+
+절대 경로를 이용하여 파일 시스템에 접근하는 함수를 통해서 가정해보자.
+런타임에는 절대 경로로 시작하는지 체크하기가 쉽지만, 타입 시스템에서는 판단하기 어렵기 때문에 상표 기법을 사용한다.
+
+```ts
+type AbsolutePath = string & { _brand: "abs" }
+function listAbsolutePath(path: AbsolutePath) {}
+function isAbsolutePath(path: string): path is AbsolutePath {
+  return path.startsWith("/")
+}
+```
+
+AbsolutePath 타입의 경우 string이면서 \_brand 속성을 가지는 객체라는게 애초에 말이 안된다. 온전히 타입 시스템의 영역이다.
+
+만일 절대경로인지, 상대경로인지 확실하지 않다면 타입 가드를 사용해서 오류를 방지할 수 있다.
+
+```ts
+function someFunc(path: string) {
+  if (isAbsolutePath(path)) {
+    listAbsolutePath(path)
+  }
+}
+```
+
+로직 분기 대신 타입 단언문을 사용해도 되지만, 타입 단언문은 사용을 지양해야한다.
+
+추가적인 예시로는 오름차순으로 정렬된 배열인지 체크하는 타입이다.
+
+```ts
+type SortedList<T> = T[] & { _brand: "sorted" }
+function isSorted<T>(arr: T[]): arr is SortedList<T> {
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i - 1] > arr[i]) return false
+  }
+  return false
+}
+
+function binarySearch<T>(arr: SortedList<T>, target: number): number {
+  //....
+}
+```
