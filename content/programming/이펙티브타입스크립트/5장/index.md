@@ -73,7 +73,7 @@ object 타입도 가능하지만, 객체의 키를 열거 가능하지만 속성
 
 ```ts
 type Fn0 = () => any
-type Fn1 = (...args: any[]) => any
+type Fn1 = (args: any[]) => any
 ```
 
 Fn1의 경우 매개변수가 배열이라는 것을 알 수 있다는 장점이 있다.
@@ -197,3 +197,50 @@ const queryUnknown = req.query as unknown as QueryParams
 ```
 
 위의 queryAny와 queryUnkown의 기능은 동일하지만, 리팩토링을 하면서 두 개의 단언문을 분리하는 순간 문제가 발생한다. unknown의 경우 분리하는 순간 에러를 발생시키지만, any는 아니다. 전염병처럼 퍼져나간다..!
+
+# 몽키 패치보다는 안전한 타입을 사용하기
+
+> 몽키 패치란 런타임에서 코드의 동작을 업데이트하는 기술을 의미한다.
+
+javascript는 언어가 매우 유연하다. window나 DOM에 접근하여 속성을 추가하거나 변경할 수 있다. 하지만 해당 데이터는 전역 변수가 되기 때문에 어떤 side effect를 발생시킬지 모른다.
+
+타입스크립트를 사용하면 문제가 더 심각해진다. 런타임에서 추가된 속성에 대해서 알 수 없기 때문이다.
+
+최선의 해결책은 당연하게 window 또는 DOM으로부터 데이터를 분리하는 것이다. 만일 불가능 할 경우 2가지 차선책이 있다.
+
+1. interface 보강 기능 사용
+
+   ```ts
+   interface Window {
+     monkey?: string
+   }
+   ```
+
+   타입이 안전하며 몽키패치가 어떤 부분에 적용되었는지 정확하게 알 수 있다.
+   하지만 모듈의 관점에서 제대로 동작하려면 global 선언을 추가해줘야 한다.
+
+2. 더 구체적인 타입 단언문을 사용하는 것이다. (any가 아니라!)
+
+   ```ts
+   interface MonkeyWindow extends Window {
+     monkey: string
+   }
+
+   const monkeyWindow = window as MonkeyWindow
+   monkeyWindow.monkey = "moonkey"
+   ```
+
+   모듈 문제 없이 타입을 확장할 수 있다.
+
+# 타입 커버리지 추적하여 타입 안정성 유지하기
+
+noImplictAny를 사용하더라도 아래 2가지의 경우 막을 수 없다.
+
+1. 명시적 any
+2. 서드파티 타입 선언
+
+npm의 type-cover-any 패키지를 이용하여 any의 개수를 추적할 수 있다.
+--detail flag를 붙이면 any 타입이 있는 곳을 모두 출력해준다.
+
+any 타입 커버리지를 꾸준하게 추적하여 불필요한 any 사용을 줄여야한다.
+(서드파티의 타입 오류가 잡혔을 경우, any로 선언한 변수가 더이상 사용되지 않을 경우)
