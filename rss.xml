@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[Gatsby Starter Blog RSS Feed]]></description><link>https://jinwook567.github.io/blog</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 08 Dec 2022 04:21:42 GMT</lastBuildDate><item><title><![CDATA[package manager]]></title><description><![CDATA[패키지 매니저 공부 배경 위투디 프로젝트에서 사용했던 기술을 바탕으로 2개의 프로젝트를 진행해보려고 한다.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[Gatsby Starter Blog RSS Feed]]></description><link>https://jinwook567.github.io/blog</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 08 Dec 2022 05:56:50 GMT</lastBuildDate><item><title><![CDATA[package manager]]></title><description><![CDATA[패키지 매니저 공부 배경 위투디 프로젝트에서 사용했던 기술을 바탕으로 2개의 프로젝트를 진행해보려고 한다.
 2개의 프로젝트 모두 웹에서 디자인 할 수 있는 canvas api…]]></description><link>https://jinwook567.github.io/blog/tech/yarnberry/</link><guid isPermaLink="false">https://jinwook567.github.io/blog/tech/yarnberry/</guid><pubDate>Wed, 07 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;패키지 매니저 공부 배경&lt;/h1&gt;
 &lt;p&gt;위투디 프로젝트에서 사용했던 기술을 바탕으로 2개의 프로젝트를 진행해보려고 한다.
 2개의 프로젝트 모두 웹에서 디자인 할 수 있는 canvas api를 사용하기 때문에 두 프로젝트가 컴포넌트를 공유하여 사용할 수 있도록 제작하려 한다.
@@ -193,7 +193,7 @@ any를 잘 다루는 방법에 대해서 알아보도록 하자.&lt;/p&gt;
 object 타입도 가능하지만, 객체의 키를 열거 가능하지만 속성에 접근은 할 수 없다는 점에서 차이가 있다.&lt;/p&gt;
 &lt;h2&gt;함수에서&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Fn0&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;
-&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Fn1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;args&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;token keyword&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Fn1&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;args&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Fn1의 경우 매개변수가 배열이라는 것을 알 수 있다는 장점이 있다.&lt;/p&gt;
 &lt;h1&gt;함수 안으로 타입 단언문 감추기&lt;/h1&gt;
 &lt;p&gt;&lt;strong&gt;불가피하게 타입 선먼문을 사용해야 한다면, 정확한 정의를 가지는 함수 안으로 숨겨야한다.&lt;/strong&gt;&lt;/p&gt;
@@ -276,7 +276,44 @@ unknown을 뱉는게 더 명시적으로 &lt;strong&gt;알 수 없음&lt;/strong
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; queryAny &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; req&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;query &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;any&lt;/span&gt; QueryParams
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; queryUnknown &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; req&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;query &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;unknown&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; QueryParams&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;위의 queryAny와 queryUnkown의 기능은 동일하지만, 리팩토링을 하면서 두 개의 단언문을 분리하는 순간 문제가 발생한다. unknown의 경우 분리하는 순간 에러를 발생시키지만, any는 아니다. 전염병처럼 퍼져나간다..!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[이펙티브 타입스크립트 4장]]></title><description><![CDATA[유효한 상태만 표현하는 타입을 지향하기 유효한 상태만 표현한다는 것의 의미가 무엇일까. 유효하지 않은 상태가 있음으로써 버그가 생기는 것이라고 할 수 있을 것 같다.
+&lt;p&gt;위의 queryAny와 queryUnkown의 기능은 동일하지만, 리팩토링을 하면서 두 개의 단언문을 분리하는 순간 문제가 발생한다. unknown의 경우 분리하는 순간 에러를 발생시키지만, any는 아니다. 전염병처럼 퍼져나간다..!&lt;/p&gt;
+&lt;h1&gt;몽키 패치보다는 안전한 타입을 사용하기&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;몽키 패치란 런타임에서 코드의 동작을 업데이트하는 기술을 의미한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;javascript는 언어가 매우 유연하다. window나 DOM에 접근하여 속성을 추가하거나 변경할 수 있다. 하지만 해당 데이터는 전역 변수가 되기 때문에 어떤 side effect를 발생시킬지 모른다.&lt;/p&gt;
+&lt;p&gt;타입스크립트를 사용하면 문제가 더 심각해진다. 런타임에서 추가된 속성에 대해서 알 수 없기 때문이다.&lt;/p&gt;
+&lt;p&gt;최선의 해결책은 당연하게 window 또는 DOM으로부터 데이터를 분리하는 것이다. 만일 불가능 할 경우 2가지 차선책이 있다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;interface 보강 기능 사용&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Window&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  monkey&lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;타입이 안전하며 몽키패치가 어떤 부분에 적용되었는지 정확하게 알 수 있다.
+하지만 모듈의 관점에서 제대로 동작하려면 global 선언을 추가해줘야 한다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;더 구체적인 타입 단언문을 사용하는 것이다. (any가 아니라!)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;MonkeyWindow&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Window&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  monkey&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token builtin&quot;&gt;string&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; monkeyWindow &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; window &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; MonkeyWindow
+monkeyWindow&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;monkey &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;moonkey&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;모듈 문제 없이 타입을 확장할 수 있다.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;타입 커버리지 추적하여 타입 안정성 유지하기&lt;/h1&gt;
+&lt;p&gt;noImplictAny를 사용하더라도 아래 2가지의 경우 막을 수 없다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;명시적 any&lt;/li&gt;
+&lt;li&gt;서드파티 타입 선언&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;npm의 type-cover-any 패키지를 이용하여 any의 개수를 추적할 수 있다.
+—detail flag를 붙이면 any 타입이 있는 곳을 모두 출력해준다.&lt;/p&gt;
+&lt;p&gt;any 타입 커버리지를 꾸준하게 추적하여 불필요한 any 사용을 줄여야한다.
+(서드파티의 타입 오류가 잡혔을 경우, any로 선언한 변수가 더이상 사용되지 않을 경우)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[이펙티브 타입스크립트 4장]]></title><description><![CDATA[유효한 상태만 표현하는 타입을 지향하기 유효한 상태만 표현한다는 것의 의미가 무엇일까. 유효하지 않은 상태가 있음으로써 버그가 생기는 것이라고 할 수 있을 것 같다.
 예시를 통해서 이해해보도록 하자. api…]]></description><link>https://jinwook567.github.io/blog/programming/이펙티브타입스크립트/4장/</link><guid isPermaLink="false">https://jinwook567.github.io/blog/programming/이펙티브타입스크립트/4장/</guid><pubDate>Thu, 01 Dec 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;유효한 상태만 표현하는 타입을 지향하기&lt;/h1&gt;
 &lt;p&gt;유효한 상태만 표현한다는 것의 의미가 무엇일까. 유효하지 않은 상태가 있음으로써 버그가 생기는 것이라고 할 수 있을 것 같다.
 예시를 통해서 이해해보도록 하자.&lt;/p&gt;

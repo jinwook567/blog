@@ -48,7 +48,7 @@ any를 잘 다루는 방법에 대해서 알아보도록 하자.</p>
 object 타입도 가능하지만, 객체의 키를 열거 가능하지만 속성에 접근은 할 수 없다는 점에서 차이가 있다.</p>
 <h2>함수에서</h2>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">type</span> <span class="token class-name">Fn0</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span>
-<span class="token keyword">type</span> <span class="token class-name">Fn1</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span></code></pre></div>
+<span class="token keyword">type</span> <span class="token class-name">Fn1</span> <span class="token operator">=</span> <span class="token punctuation">(</span>args<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">any</span></code></pre></div>
 <p>Fn1의 경우 매개변수가 배열이라는 것을 알 수 있다는 장점이 있다.</p>
 <h1>함수 안으로 타입 단언문 감추기</h1>
 <p><strong>불가피하게 타입 선먼문을 사용해야 한다면, 정확한 정의를 가지는 함수 안으로 숨겨야한다.</strong></p>
@@ -131,4 +131,41 @@ unknown을 뱉는게 더 명시적으로 <strong>알 수 없음</strong>을 알�
 <span class="token punctuation">}</span>
 <span class="token keyword">const</span> queryAny <span class="token operator">=</span> req<span class="token punctuation">.</span>query <span class="token keyword">as</span> <span class="token builtin">any</span> QueryParams
 <span class="token keyword">const</span> queryUnknown <span class="token operator">=</span> req<span class="token punctuation">.</span>query <span class="token keyword">as</span> <span class="token builtin">unknown</span> <span class="token keyword">as</span> QueryParams</code></pre></div>
-<p>위의 queryAny와 queryUnkown의 기능은 동일하지만, 리팩토링을 하면서 두 개의 단언문을 분리하는 순간 문제가 발생한다. unknown의 경우 분리하는 순간 에러를 발생시키지만, any는 아니다. 전염병처럼 퍼져나간다..!</p></section><hr/><footer><div class="bio"></div></footer></article><nav class="blog-post-nav"><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/blog/programming/이펙티브타입스크립트/4장/">← <!-- -->이펙티브 타입스크립트 4장<!-- --></a></li><li><a rel="next" href="/blog/programming/쓰로들링,디바운싱/">쓰로들링과 디바운싱<!-- --> →<!-- --></a></li></ul></nav></main><footer>© <!-- -->2022<!-- -->, Built with<!-- --> <!-- --><a href="https://www.gatsbyjs.com">Gatsby</a></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/programming/이펙티브타입스크립트/5장/";window.___webpackCompilationHash="410634792a8c6ed65c9d";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-afa68794cf9a69af341a.js"],"app":["/app-27998ba89caa9b3c7e92.js"],"component---src-pages-404-js":["/component---src-pages-404-js-e2f7f6ca5651b6fe7830.js"],"component---src-pages-index-js":["/component---src-pages-index-js-3ed2d7f18b876aa7327f.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-ee8bf947a69203d2e362.js"]};/*]]>*/</script><script src="/blog/polyfill-afa68794cf9a69af341a.js" nomodule=""></script><script src="/blog/app-27998ba89caa9b3c7e92.js" async=""></script><script src="/blog/framework-f73ef3c6bec90e8f292a.js" async=""></script><script src="/blog/webpack-runtime-7f3add95685d8251eefd.js" async=""></script></body></html>
+<p>위의 queryAny와 queryUnkown의 기능은 동일하지만, 리팩토링을 하면서 두 개의 단언문을 분리하는 순간 문제가 발생한다. unknown의 경우 분리하는 순간 에러를 발생시키지만, any는 아니다. 전염병처럼 퍼져나간다..!</p>
+<h1>몽키 패치보다는 안전한 타입을 사용하기</h1>
+<blockquote>
+<p>몽키 패치란 런타임에서 코드의 동작을 업데이트하는 기술을 의미한다.</p>
+</blockquote>
+<p>javascript는 언어가 매우 유연하다. window나 DOM에 접근하여 속성을 추가하거나 변경할 수 있다. 하지만 해당 데이터는 전역 변수가 되기 때문에 어떤 side effect를 발생시킬지 모른다.</p>
+<p>타입스크립트를 사용하면 문제가 더 심각해진다. 런타임에서 추가된 속성에 대해서 알 수 없기 때문이다.</p>
+<p>최선의 해결책은 당연하게 window 또는 DOM으로부터 데이터를 분리하는 것이다. 만일 불가능 할 경우 2가지 차선책이 있다.</p>
+<ol>
+<li>
+<p>interface 보강 기능 사용</p>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">interface</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>
+  monkey<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>타입이 안전하며 몽키패치가 어떤 부분에 적용되었는지 정확하게 알 수 있다.
+하지만 모듈의 관점에서 제대로 동작하려면 global 선언을 추가해줘야 한다.</p>
+</li>
+<li>
+<p>더 구체적인 타입 단언문을 사용하는 것이다. (any가 아니라!)</p>
+<div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">interface</span> <span class="token class-name">MonkeyWindow</span> <span class="token keyword">extends</span> <span class="token class-name">Window</span> <span class="token punctuation">{</span>
+  monkey<span class="token operator">:</span> <span class="token builtin">string</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> monkeyWindow <span class="token operator">=</span> window <span class="token keyword">as</span> MonkeyWindow
+monkeyWindow<span class="token punctuation">.</span>monkey <span class="token operator">=</span> <span class="token string">"moonkey"</span></code></pre></div>
+<p>모듈 문제 없이 타입을 확장할 수 있다.</p>
+</li>
+</ol>
+<h1>타입 커버리지 추적하여 타입 안정성 유지하기</h1>
+<p>noImplictAny를 사용하더라도 아래 2가지의 경우 막을 수 없다.</p>
+<ol>
+<li>명시적 any</li>
+<li>서드파티 타입 선언</li>
+</ol>
+<p>npm의 type-cover-any 패키지를 이용하여 any의 개수를 추적할 수 있다.
+—detail flag를 붙이면 any 타입이 있는 곳을 모두 출력해준다.</p>
+<p>any 타입 커버리지를 꾸준하게 추적하여 불필요한 any 사용을 줄여야한다.
+(서드파티의 타입 오류가 잡혔을 경우, any로 선언한 변수가 더이상 사용되지 않을 경우)</p></section><hr/><footer><div class="bio"></div></footer></article><nav class="blog-post-nav"><ul style="display:flex;flex-wrap:wrap;justify-content:space-between;list-style:none;padding:0"><li><a rel="prev" href="/blog/programming/이펙티브타입스크립트/4장/">← <!-- -->이펙티브 타입스크립트 4장<!-- --></a></li><li><a rel="next" href="/blog/programming/쓰로들링,디바운싱/">쓰로들링과 디바운싱<!-- --> →<!-- --></a></li></ul></nav></main><footer>© <!-- -->2022<!-- -->, Built with<!-- --> <!-- --><a href="https://www.gatsbyjs.com">Gatsby</a></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/programming/이펙티브타입스크립트/5장/";window.___webpackCompilationHash="410634792a8c6ed65c9d";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-afa68794cf9a69af341a.js"],"app":["/app-27998ba89caa9b3c7e92.js"],"component---src-pages-404-js":["/component---src-pages-404-js-e2f7f6ca5651b6fe7830.js"],"component---src-pages-index-js":["/component---src-pages-index-js-3ed2d7f18b876aa7327f.js"],"component---src-templates-blog-post-js":["/component---src-templates-blog-post-js-ee8bf947a69203d2e362.js"]};/*]]>*/</script><script src="/blog/polyfill-afa68794cf9a69af341a.js" nomodule=""></script><script src="/blog/app-27998ba89caa9b3c7e92.js" async=""></script><script src="/blog/framework-f73ef3c6bec90e8f292a.js" async=""></script><script src="/blog/webpack-runtime-7f3add95685d8251eefd.js" async=""></script></body></html>
