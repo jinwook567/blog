@@ -20,6 +20,11 @@ jobs:
       - name: Package Install
         run: npm install
 
+      - name: Generate Environment Variables File
+        run: |
+          touch .env
+          echo GA_TRACKING_ID=${{ secrets.GA_TRACKING_ID}} >> .env
+
       - name: Build
         run: npm run build
 
