@@ -11,6 +11,7 @@ export type Author = {
 export type BioQuery = {
   site: {
     siteMetadata: {
+      title: string;
       author: Author;
     };
   };

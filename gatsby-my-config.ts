@@ -4,11 +4,11 @@ dotenv.config({ path: '.env' });
 
 const config = {
   siteMetadata: {
-    title: `gatsby-blog`,
-    siteUrl: 'https://www.yourdomain.tld',
+    title: `nr567.xyz`,
+    siteUrl: 'https://nr567.xyz',
     author: {
-      name: 'jinwook',
-      description: 'This is my blog',
+      name: 'jinwook567',
+      description: '비즈니스에 관심이 많은 개발자입니다.',
       social: {
         github: 'https://github.com/jinwook567',
         email: 'dlwlsdnr567@naver.com',

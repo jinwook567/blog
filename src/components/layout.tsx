@@ -37,6 +37,7 @@ const bioQuery = graphql`
   query {
     site {
       siteMetadata {
+        title
         author {
           name
           description
@@ -53,13 +54,13 @@ const bioQuery = graphql`
 
 function Layout({ children }: Props) {
   const data = useStaticQuery<BioQuery>(bioQuery);
-  const { author } = data.site.siteMetadata;
+  const { author, title } = data.site.siteMetadata;
 
   return (
     <ThemeProvider theme={theme}>
       <Container>
         <Grid component="header" marginTop={3} marginBottom={8}>
-          <Bio author={author} />
+          <Bio author={author} title={title} />
         </Grid>
 
         <Grid component="main" sx={{ flex: 1 }} marginBottom={8}>

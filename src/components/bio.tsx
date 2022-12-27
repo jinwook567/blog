@@ -6,9 +6,10 @@ import SocialIconButton from './social-icon-button';
 
 type Props = {
   author: Author;
+  title: string;
 };
 
-function Bio({ author }: Props) {
+function Bio({ author, title }: Props) {
   type Service = keyof typeof author.social;
   const services = Object.keys(author.social) as Service[];
 
@@ -17,7 +18,7 @@ function Bio({ author }: Props) {
       <Grid item>
         <Link to="/">
           <Typography variant="h4" fontWeight={500}>
-            {author.name}
+            {title}
           </Typography>
         </Link>
       </Grid>

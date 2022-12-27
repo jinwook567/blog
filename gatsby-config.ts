@@ -22,6 +22,7 @@ const config: GatsbyConfig = {
       options: {
         name: myConfig.siteMetadata.title,
         short_name: myConfig.siteMetadata.title,
+        description: myConfig.siteMetadata.author.description,
         start_url: '/',
         display: 'standalone',
         icon: 'src/images/icon.png',
