@@ -17,23 +17,151 @@
 <p>속도 차이가 얼마나 나는지 궁금해서 직접 실험을 해봤다.
 AWS EC2 인스턴스를 각각 서울, 미국 버지니아 북부 지역에 생성하였고 서울에 위치하는 S3 버킷의 동영상을 다운로드 받아봤다. CDN은 AWS Cloudfront 서비스를 이용했다.</p>
 <p>서울에 위치하는 EC2에서 실험을 해봤을 때 cdn 적용 유무에 따라 차이가 없었다.
-<img src="./seoul.png" alt="서울 리전 s3,cdn">
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/2351b1f16beacc9b83348cc7abefdafe/a71c9/seoul.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 9.714285714285714%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAUUlEQVR42o3LzQZAIRRF4ZNUND4a9UNE0fu/3ro0SMM7+Fg2W/bejDFYazHnpPdOa41SCjlnYoyIyH+1VlJKqOo5G2Pw3l8hhOPdXs6529ZaPsQnLUzWlYKqAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="서울 리전 s3,cdn"
+        title="서울 리전 s3,cdn"
+        src="/static/2351b1f16beacc9b83348cc7abefdafe/8c557/seoul.png"
+        srcset="/static/2351b1f16beacc9b83348cc7abefdafe/4edbd/seoul.png 175w,
+/static/2351b1f16beacc9b83348cc7abefdafe/13ae7/seoul.png 350w,
+/static/2351b1f16beacc9b83348cc7abefdafe/8c557/seoul.png 700w,
+/static/2351b1f16beacc9b83348cc7abefdafe/e996b/seoul.png 1050w,
+/static/2351b1f16beacc9b83348cc7abefdafe/2cefc/seoul.png 1400w,
+/static/2351b1f16beacc9b83348cc7abefdafe/a71c9/seoul.png 3480w"
+        sizes="(max-width: 700px) 100vw, 700px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
 cdn이 적용되었을 때와 적용되지 않았을 때 0.7s로 동일하였다. 위의 예시는 cdn을 적용하였을 때 다운로드 속도이다.</p>
 <p>미국 버지니아 북부 지역에서 실험을 해봤을 때는 cdn 적용 유무에 따라 유의미한 차이가 있었다.</p>
 <ol>
 <li>
 <p>버지니아 리전에서 cdn이 아닌 S3(오리진 서버)로 직접 접속하여 다운 받았을 떄
-<img src="./us_s3.png" alt="버지니아 리전 s3">
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/1a4da759948b10a591da3d63c12399c5/c7b13/us_s3.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 9.714285714285714%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAXklEQVR42m2NOwoAIRBDB/yitYKVyqAieP/rZdkBi4UtHi+BQOicgzEG9t5Ya2HOidYaeu8CM0svpSDGCK01lFIgon9qrcg5I6WEEIKMnXPw3n988+3GGFhrxTe/Rw9way7GCavXkwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="버지니아 리전 s3"
+        title="버지니아 리전 s3"
+        src="/static/1a4da759948b10a591da3d63c12399c5/8c557/us_s3.png"
+        srcset="/static/1a4da759948b10a591da3d63c12399c5/4edbd/us_s3.png 175w,
+/static/1a4da759948b10a591da3d63c12399c5/13ae7/us_s3.png 350w,
+/static/1a4da759948b10a591da3d63c12399c5/8c557/us_s3.png 700w,
+/static/1a4da759948b10a591da3d63c12399c5/e996b/us_s3.png 1050w,
+/static/1a4da759948b10a591da3d63c12399c5/2cefc/us_s3.png 1400w,
+/static/1a4da759948b10a591da3d63c12399c5/c7b13/us_s3.png 3468w"
+        sizes="(max-width: 700px) 100vw, 700px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
 17초가 걸렸다.</p>
 </li>
 <li>
 <p>버지니아 리전에서 cdn을 적용하여 처음 다운로드 받았을 때
-<img src="./us_cdn.png" alt="버지니아 리전 cdn 초기">
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/4d8436a685f58963b4aee2e2b409e058/f9b4f/us_cdn.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 9.714285714285714%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAUElEQVR42o2LMQoAIRDEFlzF1kpBEBcU/f8Hc5xgeXBFmBQZmXOy1mLvzRgDM6P3TmuNnDOqioj8p9ZKKYWU0jl774kxEkI4e/2Lt7/unOMBoCEtCkYfB3UAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="버지니아 리전 cdn 초기"
+        title="버지니아 리전 cdn 초기"
+        src="/static/4d8436a685f58963b4aee2e2b409e058/8c557/us_cdn.png"
+        srcset="/static/4d8436a685f58963b4aee2e2b409e058/4edbd/us_cdn.png 175w,
+/static/4d8436a685f58963b4aee2e2b409e058/13ae7/us_cdn.png 350w,
+/static/4d8436a685f58963b4aee2e2b409e058/8c557/us_cdn.png 700w,
+/static/4d8436a685f58963b4aee2e2b409e058/e996b/us_cdn.png 1050w,
+/static/4d8436a685f58963b4aee2e2b409e058/2cefc/us_cdn.png 1400w,
+/static/4d8436a685f58963b4aee2e2b409e058/f9b4f/us_cdn.png 3470w"
+        sizes="(max-width: 700px) 100vw, 700px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
 4.4초가 걸렸다.</p>
 </li>
 <li>
 <p>버지니아 리전에서 cdn을 적용하여 두번 째 다운로드 받았을 때(캐싱된 상태)
-<img src="./us_cdn_cached.png" alt="버지니아 리전 cdn cached">
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/9ed44162e21f1f2b6bf14f0f06b52e17/8b833/us_cdn_cached.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 13.142857142857142%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAYklEQVR42pXMuwrAIBQD0Cv4GhQHUVHBwcXB//++FC+0Y2mHAyGEUIwRKSWUUtBaY2MM9N7hvYcQAkT03VoLe2/MOVFr5eOcM3POQUr57zCEAGvtU2itoZRiJx/GmFf37rgAtp9CChu8zbcAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="버지니아 리전 cdn cached"
+        title="버지니아 리전 cdn cached"
+        src="/static/9ed44162e21f1f2b6bf14f0f06b52e17/8c557/us_cdn_cached.png"
+        srcset="/static/9ed44162e21f1f2b6bf14f0f06b52e17/4edbd/us_cdn_cached.png 175w,
+/static/9ed44162e21f1f2b6bf14f0f06b52e17/13ae7/us_cdn_cached.png 350w,
+/static/9ed44162e21f1f2b6bf14f0f06b52e17/8c557/us_cdn_cached.png 700w,
+/static/9ed44162e21f1f2b6bf14f0f06b52e17/e996b/us_cdn_cached.png 1050w,
+/static/9ed44162e21f1f2b6bf14f0f06b52e17/2cefc/us_cdn_cached.png 1400w,
+/static/9ed44162e21f1f2b6bf14f0f06b52e17/8b833/us_cdn_cached.png 3476w"
+        sizes="(max-width: 700px) 100vw, 700px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
 0.5초가 걸렸다.</p>
 </li>
 </ol>
@@ -129,6 +257,6 @@ cdn이 적용되었을 때와 적용되지 않았을 때 0.7s로 동일하였다
           <script
             id="gatsby-chunk-mapping"
           >
-            window.___chunkMapping="{\"app\":[\"/app-985fbf4824733ddc138d.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-ca30cdc75dd59f5ed44c.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-9acb2cb30f8f08c89016.js\"],\"component---src-templates-category-template-tsx\":[\"/component---src-templates-category-template-tsx-524abf81c5bc7525c13d.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-cca97c64b4f1d54071a4.js\"]}";
+            window.___chunkMapping="{\"app\":[\"/app-25abd520cdef869d5975.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-ca30cdc75dd59f5ed44c.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-9acb2cb30f8f08c89016.js\"],\"component---src-templates-category-template-tsx\":[\"/component---src-templates-category-template-tsx-524abf81c5bc7525c13d.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-cca97c64b4f1d54071a4.js\"]}";
           </script>
-        <script>window.___webpackCompilationHash="18be07470ca752ae0cc8";</script><script src="/webpack-runtime-1c73440cfc21b5cc7d48.js" async></script><script src="/framework-60d2a92ac268507c0322.js" async></script><script src="/76d8c668-23ec24850b8ff9bc01f6.js" async></script><script src="/app-985fbf4824733ddc138d.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
+        <script>window.___webpackCompilationHash="dcab6bbb76f61c3ea92e";</script><script src="/webpack-runtime-1c73440cfc21b5cc7d48.js" async></script><script src="/framework-60d2a92ac268507c0322.js" async></script><script src="/76d8c668-23ec24850b8ff9bc01f6.js" async></script><script src="/app-25abd520cdef869d5975.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
