@@ -81,7 +81,7 @@
 </li>
 </ol>
 <p>컴포넌트에서 props를 정의할 때, 의식적으로 어떤 이유로 props가 정의되었는지 생각해야 올바르게 컴포넌트를 설계할 수 있다고 생각한다.</p>
-<p>다음 예시는 프로젝트 내에서 사용된 Stage 컴포넌트이다. Stage 컴포넌트를 통해서 왜 이런 props가 정의되었는지 살펴보도록 하겠다.</p>
+<p>다음 예시는 프로젝트 내에서 사용된 Stage 컴포넌트이다. Stage 컴포넌트를 통해서 왜 이런 props를 정의했는지 살펴보도록 하겠다.</p>
 <pre><code class="language-tsx">import { Stage as ReactKonvaStage } from 'react-konva';
 
 type Props = {
@@ -257,7 +257,8 @@ type Excluded = 'monkey' | never | 'tiger';
 type Excluded = 'monkey' | 'tiger';
 </code></pre>
 <p>never 타입이 유니온 타입에 존재하는 것은 의미가 전혀 없기에 타입스크립트에서 해당 타입을 제거한다.</p>
-<p>Omit 타입에 대해서 이해해보자. Mapped Type에 대해서 먼저 이해해야한다. Mapped Type은 다른 타입을 바탕으로 새로운 타입을 생성할 수 있다. Mapped Type을 활용하여 Alphabet이라는 타입을 전부 <code>string | number</code>로 변경해보겠다.</p>
+<p>Omit 타입에 대해서 이해해보자. Mapped Type에 대해서 먼저 이해해야한다. Mapped Type은 다른 타입을 바탕으로 새로운 타입을 생성할 수 있다.
+Mapped Type을 활용하여 Alphabet 타입의 속성을 가지되, 속성의 타입이 모두 <code>string | number</code>인 타입을 생성해보도록 하겠다.</p>
 <pre><code class="language-ts">type Alphabet = {
   a: string;
   b: string;
