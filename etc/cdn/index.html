@@ -1,0 +1,262 @@
+<!DOCTYPE html><html><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 5.3.3"/><meta name="description" content="cdn의 개념과 원리" data-gatsby-head="true"/><meta name="author" content="jinwook567" data-gatsby-head="true"/><style data-href="/styles.807fa0c1e29f29d3b457.css" data-identity="gatsby-global-css">.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-wrap:break-word;background-color:#fff;color:#24292f;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;line-height:1.5;margin:0}.markdown-body h1:hover .anchor .octicon-link:before,.markdown-body h2:hover .anchor .octicon-link:before,.markdown-body h3:hover .anchor .octicon-link:before,.markdown-body h4:hover .anchor .octicon-link:before,.markdown-body h5:hover .anchor .octicon-link:before,.markdown-body h6:hover .anchor .octicon-link:before{background-color:currentColor;content:" ";display:inline-block;height:16px;-webkit-mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0z"/></svg>');mask-image:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 0 1 0-2.83l2.5-2.5a2 2 0 0 1 2.83 0 .75.75 0 0 0 1.06-1.06 3.5 3.5 0 0 0-4.95 0l-2.5 2.5a3.5 3.5 0 0 0 4.95 4.95l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a2 2 0 0 1-2.83 0z"/></svg>');width:16px}.markdown-body details,.markdown-body figcaption,.markdown-body figure{display:block}.markdown-body summary{display:list-item}.markdown-body [hidden]{display:none!important}.markdown-body a{background-color:transparent;color:#0969da;text-decoration:none}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body abbr[title]{border-bottom:none;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}.markdown-body b,.markdown-body strong{font-weight:600}.markdown-body dfn{font-style:italic}.markdown-body h1{border-bottom:1px solid #d8dee4;font-size:2em;font-weight:600;margin:.67em 0;padding-bottom:.3em}.markdown-body mark{background-color:#fff8c5;color:#24292f}.markdown-body small{font-size:90%}.markdown-body sub,.markdown-body sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}.markdown-body sub{bottom:-.25em}.markdown-body sup{top:-.5em}.markdown-body img{background-color:#fff;border-style:none;box-sizing:content-box;max-width:100%}.markdown-body code,.markdown-body kbd,.markdown-body pre,.markdown-body samp{font-family:monospace,monospace;font-size:1em}.markdown-body figure{margin:1em 40px}.markdown-body hr{background:transparent;background-color:#d0d7de;border:0;box-sizing:content-box;height:.25em;margin:24px 0;overflow:hidden;padding:0}.markdown-body input{font:inherit;font-family:inherit;font-size:inherit;line-height:inherit;margin:0;overflow:visible}.markdown-body [type=button],.markdown-body [type=reset],.markdown-body [type=submit]{-webkit-appearance:button}.markdown-body [type=button]::-moz-focus-inner,.markdown-body [type=reset]::-moz-focus-inner,.markdown-body [type=submit]::-moz-focus-inner{border-style:none;padding:0}.markdown-body [type=button]:-moz-focusring,.markdown-body [type=reset]:-moz-focusring,.markdown-body [type=submit]:-moz-focusring{outline:1px dotted ButtonText}.markdown-body [type=checkbox],.markdown-body [type=radio]{box-sizing:border-box;padding:0}.markdown-body [type=number]::-webkit-inner-spin-button,.markdown-body [type=number]::-webkit-outer-spin-button{height:auto}.markdown-body [type=search]{-webkit-appearance:textfield;outline-offset:-2px}.markdown-body [type=search]::-webkit-search-cancel-button,.markdown-body [type=search]::-webkit-search-decoration{-webkit-appearance:none}.markdown-body ::-webkit-input-placeholder{color:inherit;opacity:.54}.markdown-body ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}.markdown-body a:hover{text-decoration:underline}.markdown-body hr:after,.markdown-body hr:before{content:"";display:table}.markdown-body hr:after{clear:both}.markdown-body table{border-collapse:collapse;border-spacing:0;display:block;max-width:100%;overflow:auto;width:-webkit-max-content;width:max-content}.markdown-body td,.markdown-body th{padding:0}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none!important}.markdown-body kbd{background-color:#f6f8fa;border:1px solid rgba(175,184,193,.2);border-radius:6px;box-shadow:inset 0 -1px 0 rgba(175,184,193,.2);color:#24292f;display:inline-block;font:11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown-body h2{border-bottom:1px solid #d8dee4;font-size:1.5em;font-weight:600;padding-bottom:.3em}.markdown-body h3{font-size:1.25em;font-weight:600}.markdown-body h4{font-size:1em;font-weight:600}.markdown-body h5{font-size:.875em;font-weight:600}.markdown-body h6{color:#57606a;font-size:.85em;font-weight:600}.markdown-body p{margin-bottom:10px;margin-top:0}.markdown-body blockquote{border-left:.25em solid #d0d7de;color:#57606a;margin:0;padding:0 1em}.markdown-body ol,.markdown-body ul{margin-bottom:0;margin-top:0;padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body dd{margin-left:0}.markdown-body code,.markdown-body pre,.markdown-body tt{font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;font-size:12px}.markdown-body pre{word-wrap:normal;margin-bottom:0;margin-top:0}.markdown-body .octicon{fill:currentColor;display:inline-block;overflow:visible!important;vertical-align:text-bottom}.markdown-body ::placeholder{color:#6e7781;opacity:1}.markdown-body input::-webkit-inner-spin-button,.markdown-body input::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}.markdown-body .pl-c{color:#6e7781}.markdown-body .pl-c1,.markdown-body .pl-s .pl-v{color:#0550ae}.markdown-body .pl-e,.markdown-body .pl-en{color:#8250df}.markdown-body .pl-s .pl-s1,.markdown-body .pl-smi{color:#24292f}.markdown-body .pl-ent{color:#116329}.markdown-body .pl-k{color:#cf222e}.markdown-body .pl-pds,.markdown-body .pl-s,.markdown-body .pl-s .pl-pse .pl-s1,.markdown-body .pl-sr,.markdown-body .pl-sr .pl-cce,.markdown-body .pl-sr .pl-sra,.markdown-body .pl-sr .pl-sre{color:#0a3069}.markdown-body .pl-smw,.markdown-body .pl-v{color:#953800}.markdown-body .pl-bu{color:#82071e}.markdown-body .pl-ii{background-color:#82071e;color:#f6f8fa}.markdown-body .pl-c2{background-color:#cf222e;color:#f6f8fa}.markdown-body .pl-sr .pl-cce{color:#116329;font-weight:700}.markdown-body .pl-ml{color:#3b2300}.markdown-body .pl-mh,.markdown-body .pl-mh .pl-en,.markdown-body .pl-ms{color:#0550ae;font-weight:700}.markdown-body .pl-mi{color:#24292f;font-style:italic}.markdown-body .pl-mb{color:#24292f;font-weight:700}.markdown-body .pl-md{background-color:#ffebe9;color:#82071e}.markdown-body .pl-mi1{background-color:#dafbe1;color:#116329}.markdown-body .pl-mc{background-color:#ffd8b5;color:#953800}.markdown-body .pl-mi2{background-color:#0550ae;color:#eaeef2}.markdown-body .pl-mdr{color:#8250df;font-weight:700}.markdown-body .pl-ba{color:#57606a}.markdown-body .pl-sg{color:#8c959f}.markdown-body .pl-corl{color:#0a3069;text-decoration:underline}.markdown-body [data-catalyst]{display:block}.markdown-body g-emoji{font-family:Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;font-size:1em;font-style:normal!important;font-weight:400;line-height:1;vertical-align:-.075em}.markdown-body g-emoji img{height:1em;width:1em}.markdown-body:after,.markdown-body:before{content:"";display:table}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#cf222e}.markdown-body .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body details,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-bottom:16px;margin-top:0}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body sup>a:before{content:"["}.markdown-body sup>a:after{content:"]"}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#24292f;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit;padding:0 .2em}.markdown-body ol.no-list,.markdown-body ul.no-list{list-style-type:none;padding:0}.markdown-body ol[type="1"]{list-style-type:decimal}.markdown-body ol[type=a]{list-style-type:lower-alpha}.markdown-body ol[type=i]{list-style-type:lower-roman}.markdown-body div>ol:not([type]){list-style-type:decimal}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-bottom:0;margin-top:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{font-size:1em;font-style:italic;font-weight:600;margin-top:16px;padding:0}.markdown-body dl dd{margin-bottom:16px;padding:0 16px}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{border:1px solid #d0d7de;padding:6px 13px}.markdown-body table tr{background-color:#fff;border-top:1px solid #d8dee4}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body table img{background-color:transparent}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{background-color:transparent;max-width:none;vertical-align:text-top}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{border:1px solid #d0d7de;display:block;float:left;margin:13px 0 0;overflow:hidden;padding:7px;width:auto}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{clear:both;color:#24292f;display:block;padding:5px 0 0}.markdown-body span.align-center{clear:both;display:block;overflow:hidden}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{clear:both;display:block;overflow:hidden}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{background-color:rgba(175,184,193,.2);border-radius:6px;font-size:85%;margin:0;padding:.2em .4em}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre code{font-size:100%}.markdown-body pre>code{background:transparent;border:0;margin:0;padding:0;white-space:pre;word-break:normal}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{background-color:#f6f8fa;border-radius:6px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown-body pre code,.markdown-body pre tt{word-wrap:normal;background-color:transparent;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown-body .csv-data td,.markdown-body .csv-data th{font-size:12px;line-height:1;overflow:hidden;padding:5px;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-num{background:#fff;border:0;padding:10px 8px 9px;text-align:right}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{background:#f6f8fa;border-top:0;font-weight:600}.markdown-body .footnotes{border-top:1px solid #d0d7de;color:#57606a;font-size:12px}.markdown-body .footnotes ol{padding-left:16px}.markdown-body .footnotes li{position:relative}.markdown-body .footnotes li:target:before{border:2px solid #0969da;border-radius:6px;bottom:-8px;content:"";left:-24px;pointer-events:none;position:absolute;right:-8px;top:-8px}.markdown-body .footnotes li:target{color:#24292f}.markdown-body .footnotes .data-footnote-backref g-emoji{font-family:monospace}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item label{font-weight:400}.markdown-body .task-list-item.enabled label{cursor:pointer}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item .handle{display:none}.markdown-body .task-list-item-checkbox{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body .contains-task-list:dir(rtl) .task-list-item-checkbox{margin:0 -1.6em .25em .2em}.markdown-body ::-webkit-calendar-picker-indicator{filter:invert(50%)}body,html{margin:0 auto}#___gatsby,#gatsby-focus-wrapper,body,html{height:100%}a{color:inherit;text-decoration:none}</style><title data-gatsby-head="true">cdn</title><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-NJVPHXD23C"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-NJVPHXD23C', {"send_page_view":false});
+      }
+      </script><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link rel="sitemap" type="application/xml" href="/sitemap-index.xml"/><link rel="icon" href="/favicon-32x32.png?v=b72edf6f0b94705cba2a0fa3cf7372a3" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=b72edf6f0b94705cba2a0fa3cf7372a3"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=b72edf6f0b94705cba2a0fa3cf7372a3"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=b72edf6f0b94705cba2a0fa3cf7372a3"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=b72edf6f0b94705cba2a0fa3cf7372a3"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=b72edf6f0b94705cba2a0fa3cf7372a3"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=b72edf6f0b94705cba2a0fa3cf7372a3"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=b72edf6f0b94705cba2a0fa3cf7372a3"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=b72edf6f0b94705cba2a0fa3cf7372a3"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css brdn48">.css-brdn48{min-height:100%;margin:0 auto;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding-right:20px;padding-left:20px;max-width:700px;}</style><style data-emotion="css 1t7hcqc">.css-1t7hcqc{box-sizing:border-box;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;min-height:100%;margin:0 auto;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding-right:20px;padding-left:20px;max-width:700px;}</style><div class="MuiGrid-root e1jcli240 css-1t7hcqc"><style data-emotion="css 1oohcf1">.css-1oohcf1{box-sizing:border-box;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:24px;margin-bottom:64px;}</style><header class="MuiGrid-root css-1oohcf1"><style data-emotion="css 17m6zvn">.css-17m6zvn{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin-top:-8px;}.css-17m6zvn>.MuiGrid-item{max-width:none;}.css-17m6zvn>.MuiGrid-item{padding-top:8px;}</style><div class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column css-17m6zvn"><style data-emotion="css 1wxaqej">.css-1wxaqej{box-sizing:border-box;margin:0;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}</style><div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a href="/"><style data-emotion="css 1bd8pgk">.css-1bd8pgk{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:2.125rem;line-height:1.235;letter-spacing:0.00735em;font-weight:500;}</style><h4 class="MuiTypography-root MuiTypography-h4 css-1bd8pgk">jinwook</h4></a></div><div class="MuiGrid-root MuiGrid-item css-1wxaqej"><style data-emotion="css 9l3uo3">.css-9l3uo3{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;}</style><p class="MuiTypography-root MuiTypography-body1 css-9l3uo3">비즈니스에 관심이 많은 개발자입니다.</p></div><div class="MuiGrid-root MuiGrid-item css-1wxaqej"><style data-emotion="css 1wf493t">.css-1wf493t{text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-1wf493t:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-1wf493t:hover{background-color:transparent;}}.css-1wf493t.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}</style><style data-emotion="css 1yxmbwk">.css-1yxmbwk{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-1yxmbwk::-moz-focus-inner{border-style:none;}.css-1yxmbwk.Mui-disabled{pointer-events:none;cursor:default;}@media print{.css-1yxmbwk{-webkit-print-color-adjust:exact;color-adjust:exact;}}.css-1yxmbwk:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-1yxmbwk:hover{background-color:transparent;}}.css-1yxmbwk.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}</style><a class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1yxmbwk" tabindex="0" href="https://github.com/jinwook567"><style data-emotion="css vubbuv">.css-vubbuv{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}</style><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="GitHubIcon"><path d="M12 1.27a11 11 0 00-3.48 21.46c.55.09.73-.28.73-.55v-1.84c-3.03.64-3.67-1.46-3.67-1.46-.55-1.29-1.28-1.65-1.28-1.65-.92-.65.1-.65.1-.65 1.1 0 1.73 1.1 1.73 1.1.92 1.65 2.57 1.2 3.21.92a2 2 0 01.64-1.47c-2.47-.27-5.04-1.19-5.04-5.5 0-1.1.46-2.1 1.2-2.84a3.76 3.76 0 010-2.93s.91-.28 3.11 1.1c1.8-.49 3.7-.49 5.5 0 2.1-1.38 3.02-1.1 3.02-1.1a3.76 3.76 0 010 2.93c.83.74 1.2 1.74 1.2 2.94 0 4.21-2.57 5.13-5.04 5.4.45.37.82.92.82 2.02v3.03c0 .27.1.64.73.55A11 11 0 0012 1.27"></path></svg></a><a class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-1yxmbwk" tabindex="0" href="mailto:swiminthepool66@gmail.com"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="EmailIcon"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"></path></svg></a></div></div></header><style data-emotion="css 1om4qxl">.css-1om4qxl{box-sizing:border-box;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-bottom:64px;-webkit-flex:1;-ms-flex:1;flex:1;}</style><main class="MuiGrid-root css-1om4qxl"><style data-emotion="css tadcwa">.css-tadcwa:hover{-webkit-text-decoration:underline;text-decoration:underline;}</style><a class="css-tadcwa" href="/category/etc/"><p class="MuiTypography-root MuiTypography-body1 css-9l3uo3">etc</p></a><style data-emotion="css h2kkl3">.css-h2kkl3{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:2.125rem;line-height:1.235;letter-spacing:0.00735em;font-weight:600;margin-bottom:16px;margin-top:16px;}</style><h4 class="MuiTypography-root MuiTypography-h4 css-h2kkl3">cdn</h4><section class="markdown-body"><h1>cdn이란?</h1>
+<p>cdn이란 content delivery network의 약어로 빠른 콘텐츠 전달을 목적으로 고안되었다.
+엔드 유저와 서버 사이의 물리적인 거리를 줄여서 콘텐츠 로딩에 소요되는 시간을 최소화한다.</p>
+<p>전세계에 캐시 서버를 분산 배치하여 엔드 유저의 요청에 <strong>오리진 서버가 아닌 엔드 유저에 근접한 캐시 서버가 콘텐츠를 전송한다.</strong> 거리가 먼 오리진 서버가 아닌, 가까운 캐시 서버에서 콘텐츠를 받아오기 때문에 로딩에 소요되는 시간을 획기적으로 줄일 수 있는 것이다.</p>
+<p>예시로 캐나다에 있는 유저가 한국에 있는 서비스에 접근하다면, 캐나다에 위치한 캐시 서버에서 캐싱된 콘텐츠를 전송하여 빠르게 콘텐츠를 받아올 수 있다.</p>
+<h1>cdn 적용 유무에 따른 속도 차이</h1>
+<p>속도 차이가 얼마나 나는지 궁금해서 직접 실험을 해봤다.
+AWS EC2 인스턴스를 각각 서울, 미국 버지니아 북부 지역에 생성하였고 서울에 위치하는 S3 버킷의 동영상을 다운로드 받아봤다. CDN은 AWS Cloudfront 서비스를 이용했다.</p>
+<p>서울에 위치하는 EC2에서 실험을 해봤을 때 cdn 적용 유무에 따라 차이가 없었다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/2351b1f16beacc9b83348cc7abefdafe/a71c9/seoul.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 9.714285714285714%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAUUlEQVR42o3LzQZAIRRF4ZNUND4a9UNE0fu/3ro0SMM7+Fg2W/bejDFYazHnpPdOa41SCjlnYoyIyH+1VlJKqOo5G2Pw3l8hhOPdXs6529ZaPsQnLUzWlYKqAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="서울 리전 s3,cdn"
+        title="서울 리전 s3,cdn"
+        src="/static/2351b1f16beacc9b83348cc7abefdafe/8c557/seoul.png"
+        srcset="/static/2351b1f16beacc9b83348cc7abefdafe/4edbd/seoul.png 175w,
+/static/2351b1f16beacc9b83348cc7abefdafe/13ae7/seoul.png 350w,
+/static/2351b1f16beacc9b83348cc7abefdafe/8c557/seoul.png 700w,
+/static/2351b1f16beacc9b83348cc7abefdafe/e996b/seoul.png 1050w,
+/static/2351b1f16beacc9b83348cc7abefdafe/2cefc/seoul.png 1400w,
+/static/2351b1f16beacc9b83348cc7abefdafe/a71c9/seoul.png 3480w"
+        sizes="(max-width: 700px) 100vw, 700px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+cdn이 적용되었을 때와 적용되지 않았을 때 0.7s로 동일하였다. 위의 예시는 cdn을 적용하였을 때 다운로드 속도이다.</p>
+<p>미국 버지니아 북부 지역에서 실험을 해봤을 때는 cdn 적용 유무에 따라 유의미한 차이가 있었다.</p>
+<ol>
+<li>
+<p>버지니아 리전에서 cdn이 아닌 S3(오리진 서버)로 직접 접속하여 다운 받았을 떄
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/1a4da759948b10a591da3d63c12399c5/c7b13/us_s3.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 9.714285714285714%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAXklEQVR42m2NOwoAIRBDB/yitYKVyqAieP/rZdkBi4UtHi+BQOicgzEG9t5Ya2HOidYaeu8CM0svpSDGCK01lFIgon9qrcg5I6WEEIKMnXPw3n988+3GGFhrxTe/Rw9way7GCavXkwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="버지니아 리전 s3"
+        title="버지니아 리전 s3"
+        src="/static/1a4da759948b10a591da3d63c12399c5/8c557/us_s3.png"
+        srcset="/static/1a4da759948b10a591da3d63c12399c5/4edbd/us_s3.png 175w,
+/static/1a4da759948b10a591da3d63c12399c5/13ae7/us_s3.png 350w,
+/static/1a4da759948b10a591da3d63c12399c5/8c557/us_s3.png 700w,
+/static/1a4da759948b10a591da3d63c12399c5/e996b/us_s3.png 1050w,
+/static/1a4da759948b10a591da3d63c12399c5/2cefc/us_s3.png 1400w,
+/static/1a4da759948b10a591da3d63c12399c5/c7b13/us_s3.png 3468w"
+        sizes="(max-width: 700px) 100vw, 700px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+17초가 걸렸다.</p>
+</li>
+<li>
+<p>버지니아 리전에서 cdn을 적용하여 처음 다운로드 받았을 때
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/4d8436a685f58963b4aee2e2b409e058/f9b4f/us_cdn.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 9.714285714285714%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAYAAABYBvyLAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAUElEQVR42o2LMQoAIRDEFlzF1kpBEBcU/f8Hc5xgeXBFmBQZmXOy1mLvzRgDM6P3TmuNnDOqioj8p9ZKKYWU0jl774kxEkI4e/2Lt7/unOMBoCEtCkYfB3UAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="버지니아 리전 cdn 초기"
+        title="버지니아 리전 cdn 초기"
+        src="/static/4d8436a685f58963b4aee2e2b409e058/8c557/us_cdn.png"
+        srcset="/static/4d8436a685f58963b4aee2e2b409e058/4edbd/us_cdn.png 175w,
+/static/4d8436a685f58963b4aee2e2b409e058/13ae7/us_cdn.png 350w,
+/static/4d8436a685f58963b4aee2e2b409e058/8c557/us_cdn.png 700w,
+/static/4d8436a685f58963b4aee2e2b409e058/e996b/us_cdn.png 1050w,
+/static/4d8436a685f58963b4aee2e2b409e058/2cefc/us_cdn.png 1400w,
+/static/4d8436a685f58963b4aee2e2b409e058/f9b4f/us_cdn.png 3470w"
+        sizes="(max-width: 700px) 100vw, 700px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+4.4초가 걸렸다.</p>
+</li>
+<li>
+<p>버지니아 리전에서 cdn을 적용하여 두번 째 다운로드 받았을 때(캐싱된 상태)
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/9ed44162e21f1f2b6bf14f0f06b52e17/8b833/us_cdn_cached.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 13.142857142857142%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAYklEQVR42pXMuwrAIBQD0Cv4GhQHUVHBwcXB//++FC+0Y2mHAyGEUIwRKSWUUtBaY2MM9N7hvYcQAkT03VoLe2/MOVFr5eOcM3POQUr57zCEAGvtU2itoZRiJx/GmFf37rgAtp9CChu8zbcAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="버지니아 리전 cdn cached"
+        title="버지니아 리전 cdn cached"
+        src="/static/9ed44162e21f1f2b6bf14f0f06b52e17/8c557/us_cdn_cached.png"
+        srcset="/static/9ed44162e21f1f2b6bf14f0f06b52e17/4edbd/us_cdn_cached.png 175w,
+/static/9ed44162e21f1f2b6bf14f0f06b52e17/13ae7/us_cdn_cached.png 350w,
+/static/9ed44162e21f1f2b6bf14f0f06b52e17/8c557/us_cdn_cached.png 700w,
+/static/9ed44162e21f1f2b6bf14f0f06b52e17/e996b/us_cdn_cached.png 1050w,
+/static/9ed44162e21f1f2b6bf14f0f06b52e17/2cefc/us_cdn_cached.png 1400w,
+/static/9ed44162e21f1f2b6bf14f0f06b52e17/8b833/us_cdn_cached.png 3476w"
+        sizes="(max-width: 700px) 100vw, 700px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+0.5초가 걸렸다.</p>
+</li>
+</ol>
+<p>우선 서울에서 서울에 위치하는 오리진 서버로부터 다운로드 받았을 때와 미국에서 서울에 위치하는 오리진 서버로부터 다운로드 받았을 때의 차이를 비교해본다.</p>
+<p>17초와 0.7초로 매우 많이 차이가 난다는 것을 알 수 있다. 서버와의 물리적인 거리가 멀어질수록 전송 속도가 느려진다는 것을 파악했다.</p>
+<p>이번에는 미국에서 오리진 서버로부터 다운로드 받았을 떄와 cdn을 적용했을 때 차이를 비교해본다.</p>
+<ol>
+<li>
+<p>1번 케이스 vs 3번 케이스</p>
+<p>왜 cdn을 적용해야 하는지 보여준다. 17초와 0.5초로 속도 차이가 매우 큰 것을 알 수 있다. 전세계를 대상으로 하는 서비스라면 cdn을 적용하는게 훨씬 좋은 사용자 경험을 제공할 것이다.</p>
+</li>
+<li>
+<p>2번 케이스 vs 3번 케이스</p>
+<p>캐시 서버에 콘텐츠가 캐싱이 되어 있지 않을 때와 캐싱이 되어 있을 때 비교이다. 2번 케이스의 경우 캐시 서버에 콘텐츠가 없어서 오리진 서버로부터 콘텐츠를 가져와서 캐싱 후 요청에 응답한다. 이를 cache miss라고 한다. 3번 케이스의 경우 캐싱이 된 상태이므로 오리진 서버로부터 콘텐츠를 요청하지 않고 바로 캐시 서버에서 응답한다. 이를 cache hit라고 한다. cache hit의 경우 오리진 서버를 거치지 않기 때문에 속도가 더 빠르다.</p>
+</li>
+<li>
+<p>1번 케이스 vs 2번 케이스</p>
+<p>1번 케이스와 2번 케이스 모두 오리진 서버로부터 데이터를 요청한다. 하지만 cdn을 이용하는 2번 케이스의 경우 1번 케이스 대비 약 13초나 빠르게 콘텐츠를 다운로드 하였다. 이번 비교를 통해서 캐싱된 콘텐츠를 반환하는 것이 아닌 매번 오리진을 거쳐야 하는 동적인 콘텐츠를 전달할 때도 cdn을 사용하면 좋다는 것을 알 수 있다. 어떻게 이런 일이 가능한 것일까?</p>
+<p>우리가 잘아는 KT와 같은 ISP(Internet Service Provider)들 간의 연결(ISP-ISP)은 경제적인 논리에 의해서 이루어져 있다. 따라서 항상 최적화된 라우팅 경로를 제공하는 것은 아니다.
+하지만 전세계에 깔린 cdn 서버들은 많은 네트워크 통신을 하다보니 많은 데이터가 쌓이게 되었고 최적화된 라우팅 경로를 파악하여 제공할 수 있게 되었다. cdn은 라우팅을 최적화하여 다운로드 시간을 단축시킨다.</p>
+<p>AWS의 Cloudfront의 경우에는 원본과의 지속적인 유지, gzip 압축을 사용함으로써 시간을 추가적으로 단축한다고 한다. 원본과의 지속적인 유지란, connectionless라는 HTTP의 특징과 반하는 개념으로 콘텐츠를 다운로드 받고도 지속적으로 연결을 유지하는 것을 의미한다. IP 기반의 네트워크를 통해서 TCP/IP 연결을 하기 위해서는 3 way handshake 과정을 거쳐야 하는데 이 과정에 필요한 패킷 사이즈는 크지 않아서 사실 큰 오버헤드는 아니다. 하지만 거리가 멀어질수록 round-trip time이 길어짐으로써 큰 오버헤드가 될 수 있다. 원본과의 유지를 지속함으로써 초기 연결에 필요한 시간을 세이브 할 수 있다. 초당 요청 건수가 많을수록 큰 효과를 누릴 수 있다.</p>
+<p>gzip은 전송되는 데이터 크기를 줄여서 트래픽을 줄일 수 있다. 데이터를 더 짧은 시간안에 전송할 뿐만 아니라 데이터 전송 비용도 절감할 수 있다.</p>
+</li>
+</ol>
+<h1>cdn의 속도 이외의 기능</h1>
+<p>cdn을 활용하면 콘텐츠를 빠르게 전달한다는 장점 이외에도 요청을 여러개의 서버로 분산시킬 수 있으므로 대역폭 소비를 줄이며 안정적인 서비스 제공이 가능하다.</p>
+<p>극단적인 예시로는 DDOS 공격에 대한 방어인데, DDOS 공격이란 좀비 pc를 사용하여 특정 서비스에 엄청난 트래픽을 발생시켜서 서비스를 무력화 시키는 것을 말한다.</p>
+<p>CDN이 요청을 분산하여 오리진 서버에 미치는 영향을 줄임으로써 트래픽 급증에 대처할 수 있다. 만일 한국 캐시 서버의 요청이 너무 많다면, 옆에 도쿄로 분산시키고, 도쿄도 많다면 홍콩으로 분산시키고.. 이러한 방식으로 전세계에 배치된 캐시 서버를 활용하여 요청을 분산시킨다. 또한 사용자 위치에 따라 접근을 제어하거나 너무 빠르거나 느린 요청을 차단함으로써 요청을 줄인다고 한다.</p>
+<h1>캐싱 관리</h1>
+<h2>캐싱 만료 주기</h2>
+<p>CDN 서비스를 이용할 때 기본적으로 캐싱의 만료 주기(TTL)를 설정할 수 있다.</p>
+<p>요청을 받았을 때, 캐시 서버에 저장된 콘텐츠가 만료되었다면 캐시 서버는 원본 서버에 데이터가 변경되었는지 유효성을 검증한다. 변경되지 않았다면 HTTP 304(not modified) 응답을 받게되고 캐싱으로 저장된 콘텐츠를 수정하지 않고 TTL만 갱신하여 요청에 응답한다. 이를 Cache Refresh Hit이라고 한다. 만일 변경되었다는 HTTP 200 응답을 받게되면 오리진 서버로부터 콘텐츠를 다운로드받고 해당 콘텐츠로 캐싱을 갱신하여 요청에 응답한다. 이를 Cache Refresh Miss라고 한다.</p>
+<h2>캐싱의 만료 주기가 끝나기 전에 콘텐츠 수정이 일어난다면?</h2>
+<p>캐싱의 만료 주기가 끝나기 전에, 콘텐츠의 수정이 일어나게 된다면 캐시 서버는 변경되기 전의 콘텐츠를 제공할 것이다.</p>
+<p>위와 같은 문제는 2가지 전략으로 해결할 수 있다.</p>
+<ol>
+<li>
+<p>캐시 서버에 캐싱된 콘텐츠를 강제로 삭제한다.</p>
+<p>캐싱된 콘텐츠를 강제로 삭제함으로써 캐시 서버는 오리진 서버에 새롭게 콘텐츠를 요청하여 받아온다. 만일 캐싱된 콘텐츠가 사용령이 많다면 순간적으로 오리진 서버에 부하가 올 수 있으므로 사용에 유의해야 한다. 또한 사용자 단의(브라우저 등) 로컬 캐시된 콘텐츠의 갱신을 보장하지 않는다.</p>
+</li>
+<li>
+<p>콘텐츠를 다른 이름으로 저장한다.</p>
+<p>이 방식은 사용자 단의 콘텐츠의 최신성을 보장해줄 수 있다. AWS에서는 파일을 버전관리 함으로써 이 전략을 수행하도록 권장한다.</p>
+<p>캐싱의 기준은 콘텐츠가 아닌 URL 기반이기 때문에 쿼리스트링이 추가될 수 있다. 동일 콘텐츠임에도 불구하고 쿼리스트링이 달라짐으로써 캐싱이 안될수도 있으니 잘 설정해주어야 한다.</p>
+</li>
+</ol>
+<h1>어떻게 가까운 곳을 찾아서 전달할 수 있을까?</h1>
+<p>CDN은 엔드 유저의 요청에서 가장 가까운 캐시 서버의 캐싱된 콘텐츠를 반환함으로써 빠른 다운로드 속도를 제공한다고 했다. 그렇다면 어떻게 엔드 유저와 가까운 캐시 서버를 알 수 있을까? 이는 라우팅의 원리를 알아야한다.</p>
+<h2>라우팅 테이블</h2>
+<p>라우팅은 네트워크에서 경로를 선택하는 프로세스이다. 쉽게 말하면 라우터에서 라우터로 이동하면서 목적지 주소를 찾는 과정을 말한다. 목적지 주소가 라우터와 동일한 네트워크에 있을 경우 패킷을 직접 전달하는 것으로 마무리된다.</p>
+<p>라우터에서 라우터로 이동할 때 라우팅 테이블이라는 표를 보고 움직이게 된다. 라우팅 테이블에는 최적의 경로로 도달할 수 있는 다음 라우터의 네트워크 주소만 명시되어있다.</p>
+<p>동일한 네트워크에 연결된 컴퓨터 하나하나 모두 명시하는게 아니라 네트워크 주소만 명시하는 이유는 테이블의 크기를 줄이기 위함이다. 테이블 크기를 줄임으로써 검색도 빨라지고 메모리 낭비도 줄일 수 있다.</p>
+<p>라우팅 테이블에는 모든 경로에 대한 네트워크 주소가 들어가있는게 아니고 다음 라우터에 대한 네트워크 주소만 들어가있다. 그 이유는 다음 라우터 네트워크 주소만 들어가 있어도 차례대로 이동하면서 목적지에 도착할 수 있기 때문이다. 굳이 모든 경로에 대한 네트워크 주소를 명시함으로써 메모리 낭비를 할 필요가 없다.</p>
+<h3>그렇다면 라우팅 테이블은 어떻게 구성되는 것일까?</h3>
+<p>라우팅 테이블을 구성하는 방법은 2가지이다.</p>
+<ol>
+<li>
+<p>정적 라우팅 테이블</p>
+<p>직접 사용자가 라우팅 테이블을 입력해준다.
+네트워크에 붙어 있는 마지막 컴퓨터들이 정적 라우팅을 하는 경우가 대부분이다. 혹은 보안적으로 어떤 목적이 있거나.</p>
+</li>
+<li>
+<p>동적 라우팅 테이블</p>
+<p>라우팅 프로토콜에 의해서 동적으로 구성된다.</p>
+<p>유니캐스트 라우팅 프로토콜: 일대일 통신을 말한다. 보내는 사람도 하나, 받는 사람도 하나</p>
+<p>멀티캐스트 라우팅 프로토콜: 보내는 사람은 하나인데 받는 사람 여려명</p>
+</li>
+</ol>
+<h2>라우팅 프로토콜</h2>
+<p>최적화된 라우팅 테이블을 만드는데 라우팅 프로토콜이 사용된다.</p>
+<p>라우팅 프로토콜은 내부 게이트웨이 프로토콜과 외부 게이트웨이 프로토콜로 나누어진다. 나누는 기준은 AS이며 AS(Autonomous System)는 독립적인 네트워크로 라우팅 정보를 주고 받을 수 있는 영역이며 2가지 특징을 가진다.</p>
+<ol>
+<li>AS 내의 라우터들은 서로 동일한 라우팅 프로토콜을 사용한다.</li>
+<li>AS 내의 라우터들은 한 조직에 의해 관리된다.</li>
+</ol>
+<h3>내부 프로토콜</h3>
+<p>내부 프로토콜에는 Distance Vector 알고리즘, Link State 알고리즘이 사용된다.</p>
+<ol>
+<li>
+<p>Distance Vector 알고리즘</p>
+<p>최소 경로를 계산하기 위해서 벨만 포드 알고리즘을 사용한다.
+벨만 포드 알고리즘을 사용하는 이유는 음의 간선이 존재해서가 아니라 본인이 가진 네트워크 정보를 이웃하고만 교환하는 방식이기 떄문이라고 생각한다.</p>
+</li>
+<li>
+<p>Link State 알고리즘</p>
+<p>본인으로부터 모든 목적지까지 가는 최단 경로를 구한다. 다익스트라 알고리즘을 사용한다.
+다익스트라 알고리즘을 사용하는 이유는 이웃 이외에도 모든 노드와 네트워크 정보를 교환하기 때문이다. 모든 정보를 알고있다면 다익스트라 알고리즘이 시간복잡도에서 효율적이다.</p>
+</li>
+</ol>
+<h3>외부 프로토콜</h3>
+<p>외부 프로토콜은 경로 벡터 라우팅이라는 방식에 의해서 수행된다.</p>
+<p>경로 벡터 라우팅에는 목적지 네트워크, 다음 라우터, 경로명이 명시된다. Distance Vector 알고리즘 기반으로 작동하고 looping 되는 경로를 방지하기 위해 모든 path를 명시한다.</p></section><style data-emotion="css 1ceokph">.css-1ceokph{box-sizing:border-box;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-top:40px;}</style><div class="MuiGrid-root css-1ceokph"><style data-emotion="css 8rnkcc">.css-8rnkcc{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;}</style><div class="MuiGrid-root MuiGrid-container css-8rnkcc"><div class="MuiGrid-root MuiGrid-item css-1wxaqej"><style data-emotion="css xyk8im">.css-xyk8im:hover>div{-webkit-text-decoration:underline;text-decoration:underline;}</style><a class="css-xyk8im" href="/etc/이펙티브타입스크립트/6장/"><style data-emotion="css 1qqjlpi">.css-1qqjlpi{box-sizing:border-box;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:100%;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-column-gap:8px;column-gap:8px;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}</style><div class="MuiGrid-root MuiGrid-container css-1qqjlpi"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="WestIcon"><path d="m9 19 1.41-1.41L5.83 13H22v-2H5.83l4.59-4.59L9 5l-7 7 7 7z"></path></svg><style data-emotion="css zq6grw">.css-zq6grw{margin:0;font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1.5rem;line-height:1.334;letter-spacing:0em;}</style><h5 class="MuiTypography-root MuiTypography-h5 css-zq6grw">이펙티브 타입스크립트 6장</h5></div></a></div><div class="MuiGrid-root MuiGrid-item css-1wxaqej"><a class="css-xyk8im" href="/algorithm/택배 배달과수거하기/"><div class="MuiGrid-root MuiGrid-container css-1qqjlpi"><h5 class="MuiTypography-root MuiTypography-h5 css-zq6grw">택배 배달과 수거하기</h5><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="EastIcon"><path d="m15 5-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z"></path></svg></div></a></div></div></div></main><style data-emotion="css 1otbfh8">.css-1otbfh8{box-sizing:border-box;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-bottom:8px;}</style><footer class="MuiGrid-root css-1otbfh8"><style data-emotion="css rfnosa">.css-rfnosa{box-sizing:border-box;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;}</style><div class="MuiGrid-root css-rfnosa">© 2024 jinwook567, Powered by <style data-emotion="css 1wbll7q">.css-1wbll7q{-webkit-text-decoration:underline;text-decoration:underline;}</style><a href="https://github.com/jinwook567/gatsby-blog" class="css-1wbll7q e2v4two0">gatsby-blog</a></div></footer></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/etc/cdn/";/*]]>*/</script><!-- slice-start id="_gatsby-scripts-1" -->
+          <script
+            id="gatsby-chunk-mapping"
+          >
+            window.___chunkMapping="{\"app\":[\"/app-7d206e2f789429ccd168.js\"],\"component---src-pages-404-tsx\":[\"/component---src-pages-404-tsx-ca30cdc75dd59f5ed44c.js\"],\"component---src-pages-index-tsx\":[\"/component---src-pages-index-tsx-9acb2cb30f8f08c89016.js\"],\"component---src-templates-category-template-tsx\":[\"/component---src-templates-category-template-tsx-524abf81c5bc7525c13d.js\"],\"component---src-templates-post-template-tsx\":[\"/component---src-templates-post-template-tsx-cca97c64b4f1d54071a4.js\"]}";
+          </script>
+        <script>window.___webpackCompilationHash="cc9e355ad6db762338f0";</script><script src="/webpack-runtime-1c73440cfc21b5cc7d48.js" async></script><script src="/framework-60d2a92ac268507c0322.js" async></script><script src="/76d8c668-23ec24850b8ff9bc01f6.js" async></script><script src="/app-7d206e2f789429ccd168.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
