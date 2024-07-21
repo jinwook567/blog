@@ -2,6 +2,7 @@ import type { GatsbyConfig } from 'gatsby';
 import myConfig from './gatsby-my-config';
 
 const config: GatsbyConfig = {
+  pathPrefix: '/blog',
   siteMetadata: myConfig.siteMetadata,
   graphqlTypegen: true,
   plugins: [
